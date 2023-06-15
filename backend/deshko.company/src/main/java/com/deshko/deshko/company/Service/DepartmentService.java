@@ -1,6 +1,8 @@
 package com.deshko.deshko.company.Service;
 
+import com.deshko.deshko.company.Entity.Parcel;
 import com.deshko.deshko.company.Repositories.DepartmentRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,4 +15,6 @@ public class DepartmentService {
     public DepartmentService(DepartmentRepository departmentRepository) {
         this.departmentRepository = departmentRepository;
     }
+
+
 }

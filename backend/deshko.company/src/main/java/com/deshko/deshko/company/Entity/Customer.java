@@ -20,7 +20,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "customer_id")
-    private UUID id;
+    private String id;
 
     @Column(name = "login", unique = true)
     private String login;

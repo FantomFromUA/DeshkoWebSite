@@ -21,7 +21,7 @@ public class Parcel {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "parcel_id")
-    private UUID id;
+    private String id;
 
     @ManyToOne
     @JoinColumn(name = "customer", referencedColumnName = "customer_id")
@@ -30,12 +30,12 @@ public class Parcel {
     @Column(name = "dispatcher")
     private String dispatcher;
 
-//    @ManyToOne
-//    @JoinColumn(name = "address", referencedColumnName = "department_id")
-//    private Department department;
+    @ManyToOne
+    @JoinColumn(name = "address", referencedColumnName = "department_id")
+    private Department department;
 
-    @Column(name = "status")
     @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false, columnDefinition = "ENUM('обробляється','в дорозі','отримано','відміна') DEFAULT 'обробляється'")
     private ParcelStatus status;
 
     @Column(name = "date_of_shipment")
