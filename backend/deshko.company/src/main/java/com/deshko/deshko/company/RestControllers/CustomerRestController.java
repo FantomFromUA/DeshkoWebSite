@@ -1,5 +1,6 @@
 package com.deshko.deshko.company.RestControllers;
 
+import com.deshko.deshko.company.DTO.CustomerDTO;
 import com.deshko.deshko.company.DTO.CustomerSingIn;
 import com.deshko.deshko.company.Entity.Customer;
 import com.deshko.deshko.company.Service.CustomerService;
@@ -38,7 +39,12 @@ public class CustomerRestController {
     public ResponseEntity postCustomer(@RequestBody Customer customer){
         Customer newCustomer = customerService.postCustomer(customer);
 
-        return ResponseEntity.status(HttpStatus.OK).body(customer);
+        return ResponseEntity.status(HttpStatus.OK).body(CustomerDTO
+                .builder()
+                .email(customer.getEmail())
+                .login(customer.getLogin())
+                .phoneNumber(customer.getPhoneNumber())
+                .build());
     }
 
     @PutMapping
@@ -49,7 +55,12 @@ public class CustomerRestController {
 
         Customer newCustomer = customerService.postCustomer(customer);
 
-        return ResponseEntity.status(HttpStatus.OK).body(customer);
+        return ResponseEntity.status(HttpStatus.OK).body(CustomerDTO
+                .builder()
+                .email(customer.getEmail())
+                .login(customer.getLogin())
+                .phoneNumber(customer.getPhoneNumber())
+                .build());
     }
 
     @GetMapping("/singin")
@@ -60,6 +71,11 @@ public class CustomerRestController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Something went wrong");
         }
 
-        return ResponseEntity.status(HttpStatus.OK).body(customer);
+        return ResponseEntity.status(HttpStatus.OK).body(CustomerDTO
+                .builder()
+                .email(customer.getEmail())
+                .login(customer.getLogin())
+                .phoneNumber(customer.getPhoneNumber())
+                .build());
     }
 }
