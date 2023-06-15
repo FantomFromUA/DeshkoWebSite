@@ -40,6 +40,4 @@ public class Customer {
     @Column(name = "enabled")
     private boolean enabled;
 
-    @OneToMany(mappedBy = "customer")
-    private List<Parcel> parcels;
 }

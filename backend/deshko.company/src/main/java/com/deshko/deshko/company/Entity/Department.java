@@ -31,7 +31,4 @@ public class Department {
 
     @Column(name = "building_number")
     private String buildingNumber;
-
-    @OneToMany(mappedBy = "department")
-    private List<Parcel> parcels;
 }
