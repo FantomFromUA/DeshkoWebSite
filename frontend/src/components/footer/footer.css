@@ -1,0 +1,14 @@
+.footer {
+    padding: 100px;
+    background-image: url("../../images/footer.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+}
+.link {
+  color: white;
+}
+.link:hover {
+  color: red;
+  opacity: 0.6;
+}

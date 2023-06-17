@@ -1,42 +1,80 @@
-import React from 'react';
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import React from "react";
+import "./footer.css";
 import {
-    MDBFooter,
-    MDBContainer,
-    MDBBtn
-} from 'mdb-react-ui-kit';
-import {
-    FaGithub,
-    FaLinkedin,
-    FaInstagram,
-    FaGoogle,
-    FaHome,
-    FaQuestion
-} from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-
-
+  FaInstagram,
+  FaFacebook,
+  FaTelegram,
+  FaPhoneAlt,
+} from "react-icons/fa";
+import { BiSend } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
-    return (
-        <div className="bg-dark text-center text-white" style={{ width: "100vw" }}>
-            <div className="container p-4 pb-0">
-                <section className="mb-4">
-                    <Link className="btn btn-outline-light btn-floating m-1" to="https://www.instagram.com/deshkulio/" role="button">
-                        <FaInstagram />
-                    </Link>
-                    <Link className="btn btn-outline-light btn-floating m-1" to="/" role="button">
-                        <FaHome />
-                    </Link>
-                    <Link className="btn btn-outline-light btn-floating m-1" to="/about" role="button">
-                        <FaQuestion />
-                    </Link>
-                </section>
-            </div>
-            <div className="text-center p-3" style={{ backgroundColor: "grey" }}>
-                © 2023 My Custom ANIME-LIST
-            </div>
-        </div>
-    );
-}
+  return (
+    <div className="text-white">
+      <Typography component="footer" className={"footer"}>
+        <Container maxWidth="lg" sx={{ my: 8, display: "flex" }}>
+          <Grid container spacing={3}>
+            <Grid
+              item
+              xs={6}
+              alignContent="center"
+            >
+              <Typography variant="body1" sx={{fontSize: 'h6.fontSize', fontFamily: '"Helvetica Neue"', fontWeight: 'bold'}}>
+                За додатковою інформацією звертайтесь
+              </Typography>
+              <Button
+                color="error"
+                variant="contained"
+                size="large"
+                component="a"
+                href="/"
+                sx={{ minWidth: 350, marginTop: 3 }}
+                endIcon={<BiSend />}
+              >
+                Залишити повідомлення
+              </Button>
+            </Grid>
+            <Grid
+              item
+              xs={4}
+            >
+              <Box component="ul" sx={{ m: 0, listStyle: "none", p: 0 }}>
+                <Box component="li" sx={{ py: 0.5, fontSize: 'h6.fontSize', fontFamily: '"Helvetica Neue"'  }}>
+                  <Link to="/" className="link text-decoration-none">Про нас</Link>
+                </Box>
+                <Box component="li" sx={{ py: 0.5, fontSize: 'h6.fontSize', fontFamily: '"Helvetica Neue"'}}>
+                  <Link to="/" className="link text-decoration-none">Послуги</Link>
+                </Box>
+                <Box component="li" sx={{ py: 0.5, fontSize: 'h6.fontSize', fontFamily: '"Helvetica Neue"' }}>
+                  <Link to="/" className="link text-decoration-none">Калькулятор розрахунку</Link>
+                </Box>
+                <Box component="li" sx={{ py: 0.5, fontSize: 'h6.fontSize', fontFamily: '"Helvetica Neue"' }}>
+                  <Link to="/" className="link text-decoration-none">Контакти</Link>
+                </Box>
+              </Box>
+            </Grid>
+            <Grid item xs>
+              <Link className="m-1 link text-white h3" to="/">
+                <FaInstagram />
+              </Link>
+              <Link className="m-1 link text-white h3" to="/">
+                <FaFacebook />
+              </Link>
+              <Link className="m-1 link text-white h3" to="/">
+                <FaTelegram />
+              </Link>
+              <Link className="m-1 link text-white h3" to="/">
+                <FaPhoneAlt />
+              </Link>
+            </Grid>
+          </Grid>
+        </Container>
+      </Typography>
+      <div className="bg-dark text-center p-3">© 2023 Deshko Company</div>
+    </div>
+  );
+};
 
 export default Footer;

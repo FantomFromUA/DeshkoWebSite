@@ -1,17 +1,19 @@
 import * as React from 'react';
 import "./aboutPage.css";
-import { Button } from 'react-bootstrap';
+
+import QuestionHero from '../../components/questionHero/QuestionHero';
+import BannerHero from '../../components/bannerHero/BannerHero';
+import RegestrationBlock from '../../components/registrationBlock/RegistrationBlock';
+
 
 const AboutPage : React.FC = () => {
     return (
         <div>
-            <div className='about-banner'>
-                <h1 className='about-banner-text'>Deshko Company</h1>
-            </div>
+            <BannerHero/>
             <div className='about-info'>
                 <div className='about-info-hero'>
                     <img 
-                        className='about-imgage'
+                        className='about-image'
                         src = {require('../../images/about-us-photo.jpg')}
                         alt="" 
                     />
@@ -38,14 +40,14 @@ const AboutPage : React.FC = () => {
                         </p>
                     </div>
                     <img 
-                        className='about-imgage'
+                        className='about-image'
                         src = {require('../../images/portal.jpg')}
                         alt="" 
                     />
                 </div>
                 <div className='about-info-hero'>
                     <img 
-                        className='about-imgage'
+                        className='about-image'
                         src = {require('../../images/portal2.jpg')}
                         alt="" 
                     />
@@ -67,10 +69,8 @@ const AboutPage : React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className='sing-up-info'>
-                <h2>Зарегеструватись прямо зараз</h2>
-                <Button variant="primary" size='lg'>Регестрація</Button>
-            </div>
+            <RegestrationBlock/>
+            <QuestionHero/>
         </div>
     );
 }
