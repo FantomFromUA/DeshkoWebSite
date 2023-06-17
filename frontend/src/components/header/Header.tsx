@@ -15,8 +15,8 @@ const Header = () => {
       <Container>
         <Navbar.Brand href="/">Deshko Company</Navbar.Brand>
         <Nav className='me-auto'>
-          <Nav.Link href="/">Про нас</Nav.Link>
-          <Nav.Link href="/about">Послуги</Nav.Link>
+          <Nav.Link href="/about">Про нас</Nav.Link>
+          <Nav.Link href="/">Послуги</Nav.Link>
           <Nav.Link href="/">Контакти</Nav.Link>
         </Nav>
         <Nav className="ml-auto">

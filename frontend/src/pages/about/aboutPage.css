@@ -5,17 +5,17 @@
 
 .about-image{
     width: 50%;
-    height: auto;
+    height: 50vh;
 }
 
 .about-info-hero{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; 
 }
 
 .about-text{
-    text-align: center;
     font-size: large;
     width: 50%;
+    padding: 30px;
 }
