@@ -6,12 +6,14 @@ import BannerHero from "../../components/bannerHero/BannerHero";
 import RegestrationBlock from "../../components/registrationBlock/RegistrationBlock";
 import StatsBlock from "../../components/statsBlock/StatsBlock";
 import { Typography } from "@mui/material";
+import InfoBar from "../../components/infoBar/InfoBar";
 
 const AboutPage: React.FC = () => {
   return (
     <div>
       <BannerHero />
       <StatsBlock />
+      <InfoBar />
       <div className="about-info">
         <div className="about-info-hero">
           <img
