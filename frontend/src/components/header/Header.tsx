@@ -47,7 +47,7 @@ const Header = () => {
               <Nav.Link href="/" className="m-1">
                 <FaPhoneAlt />
               </Nav.Link>
-              <Nav.Link href="/" className="mt-1">Вхід/Реєстрація</Nav.Link>
+              <Nav.Link href="/signin" className="mt-1">Вхід/Реєстрація</Nav.Link>
             </Nav>
           )}
         </Navbar.Collapse>

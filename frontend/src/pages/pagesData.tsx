@@ -8,6 +8,8 @@ import ServicesPage from "./services/ServicesPage";
 import TaryfyPage from "./taryfy/TaryfyPage";
 import MainPage from "./main/MainPage";
 import TrackingPage from "./tracking/TrackingPage";
+import SignIn from "./signIn/SignInPage";
+import SignUp from "./signUp/SignUpPage";
 
 const pagesData: routerType[] = [
     {
@@ -43,6 +45,16 @@ const pagesData: routerType[] = [
         path: "/tracking",
         element: <TrackingPage/>,
         title: "tracking"
+    },
+    {
+        path: "/signin",
+        element: <SignIn/>,
+        title: "signin"
+    },
+    {
+        path: "/signup",
+        element: <SignUp/>,
+        title: "signup"
     },
     {
         path: "/404",
