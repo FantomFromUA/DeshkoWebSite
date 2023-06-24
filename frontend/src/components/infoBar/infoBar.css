@@ -1,13 +1,13 @@
 .info-container {
     height: 10vh;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        flex-direction: row;
-        margin-left: 20%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    margin-left: 20%;
 }
 
-.info-link{
+.info-link {
     text-decoration: none;
     color: black;
     margin-right: 10px;
@@ -16,9 +16,10 @@
 .info-link:hover() {
     color: red;
     opacity: 0.6;
+    text-decoration: underline;
 }
 
 .info-link-no-hover:hover {
     color: black;
     opacity: 1;
-  }
+}

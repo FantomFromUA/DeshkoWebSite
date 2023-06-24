@@ -20,3 +20,33 @@
   position: relative;
   height: 75vh;
 }
+
+.contentContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  font-family: "Helvetica Neue";
+  font-weight: bold;
+  color: white;
+}
+
+.numberIcon {
+  font-size: 2rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  font-family: "Helvetica Neue";
+  color: white;
+}
+
+.ctaButton:hover {
+  color: white;
+}

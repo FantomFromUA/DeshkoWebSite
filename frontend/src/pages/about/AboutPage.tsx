@@ -4,7 +4,6 @@ import "./aboutPage.css";
 import QuestionHero from "../../components/questionHero/QuestionHero";
 import BannerHero from "../../components/bannerHero/BannerHero";
 import RegestrationBlock from "../../components/registrationBlock/RegistrationBlock";
-import StatsBlock from "../../components/statsBlock/StatsBlock";
 import { Typography } from "@mui/material";
 import InfoBar from "../../components/infoBar/InfoBar";
 
@@ -12,12 +11,24 @@ const AboutPage: React.FC = () => {
   return (
     <div>
       <BannerHero />
-      <StatsBlock />
       <InfoBar />
+      <div className="about-image-container">
+        <div className="about-image">
+          <div className="about-text-container">
+            <Typography
+              variant="h2"
+              sx={{ color: "white", fontWeight: "bold", textAlign: "center" }}
+            >
+              Про нас
+            </Typography>
+          </div>
+        </div>
+      </div>
+
       <div className="about-info">
         <div className="about-info-hero">
           <img
-            className="about-image"
+            className="about-image-block"
             src={require("../../images/about-us-photo.jpg")}
             alt=""
           />
@@ -77,14 +88,14 @@ const AboutPage: React.FC = () => {
             </Typography>
           </div>
           <img
-            className="about-image"
+            className="about-image-block"
             src={require("../../images/portal.jpg")}
             alt=""
           />
         </div>
         <div className="about-info-hero">
           <img
-            className="about-image"
+            className="about-image-block"
             src={require("../../images/portal2.jpg")}
             alt=""
           />

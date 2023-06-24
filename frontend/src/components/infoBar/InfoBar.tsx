@@ -1,5 +1,4 @@
 import { Typography } from "@mui/material";
-import { hover } from "@testing-library/user-event/dist/hover";
 import * as React from "react";
 import { Link } from "react-router-dom";
 import "./infoBar.css";

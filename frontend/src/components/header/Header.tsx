@@ -1,7 +1,5 @@
-import * as React from 'react';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import React, { useState, useEffect } from 'react';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import {
   FaInstagram, 
   FaTelegram,
@@ -10,30 +8,49 @@ import {
 } from 'react-icons/fa';
 
 const Header = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); 
+    };
+
+    handleResize(); 
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <Navbar bg="dark" variant="dark" sticky="top">
+    <Navbar expand="lg" bg="dark" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand href="/">Deshko Company</Navbar.Brand>
-        <Nav className='me-auto'>
-          <Nav.Link href="/about">Про нас</Nav.Link>
-          <Nav.Link href="/">Послуги</Nav.Link>
-          <Nav.Link href="/">Контакти</Nav.Link>
-        </Nav>
-        <Nav className="ml-auto">
-          <Nav.Link className="m-1" href="/">
+        <Navbar.Toggle aria-controls="navbar-nav" />
+        <Navbar.Collapse id="navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/about">Про нас</Nav.Link>
+            <Nav.Link href="/tracking">Трекінг</Nav.Link>
+            <Nav.Link href="/services">Послуги</Nav.Link>
+            <Nav.Link href="/taryfy">Тарифи</Nav.Link>
+            <Nav.Link href="/contact">Контакти</Nav.Link>
+          </Nav>
+          {!isMobile && (
+            <Nav className="ml-auto">
+              <Nav.Link href="/" className="m-1">
                 <FaInstagram />
-          </Nav.Link>
-          <Nav.Link className="m-1" href="/">
+              </Nav.Link>
+              <Nav.Link href="/" className="m-1">
                 <FaFacebook />
-          </Nav.Link>
-          <Nav.Link className="m-1" href="/">
+              </Nav.Link>
+              <Nav.Link href="/" className="m-1">
                 <FaTelegram />
-          </Nav.Link>
-          <Nav.Link className="m-1" href="/">
+              </Nav.Link>
+              <Nav.Link href="/" className="m-1">
                 <FaPhoneAlt />
-          </Nav.Link>
-          <Nav.Link href="/" className='mt-1'>Зареєструватись</Nav.Link>
-        </Nav>
+              </Nav.Link>
+              <Nav.Link href="/" className="mt-1">Вхід/Реєстрація</Nav.Link>
+            </Nav>
+          )}
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );

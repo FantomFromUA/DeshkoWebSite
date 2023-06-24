@@ -10,6 +10,7 @@ const StatsBlock = () => {
         display: "flex",
         py: 5,
         minWidth: "100vw",
+        backgroundColor: "#fbfafa"
       }}
     >
       <Grid
