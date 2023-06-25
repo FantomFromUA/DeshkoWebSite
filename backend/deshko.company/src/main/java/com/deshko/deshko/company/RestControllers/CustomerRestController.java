@@ -1,17 +1,15 @@
 package com.deshko.deshko.company.RestControllers;
 
-import com.deshko.deshko.company.DTO.CustomerDTO;
 import com.deshko.deshko.company.DTO.CustomerSingIn;
 import com.deshko.deshko.company.Entity.Customer;
 import com.deshko.deshko.company.Mapper.CustomerMapper;
 import com.deshko.deshko.company.Service.CustomerService;
+import com.deshko.deshko.company.Service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/api/customer")
@@ -19,10 +17,12 @@ import java.util.UUID;
 public class CustomerRestController {
 
     private CustomerService customerService;
+    private EmailService emailService;
 
     @Autowired
-    public CustomerRestController(CustomerService customerService) {
+    public CustomerRestController(CustomerService customerService, EmailService emailService) {
         this.customerService = customerService;
+        this.emailService = emailService;
     }
 
     @GetMapping("/{id}")
@@ -39,6 +39,8 @@ public class CustomerRestController {
     @PostMapping
     public ResponseEntity postCustomer(@RequestBody Customer customer){
         Customer newCustomer = customerService.postCustomer(customer);
+
+        emailService.verificationEmail(newCustomer.getEmail(), newCustomer.getId());
 
         return ResponseEntity.status(HttpStatus.OK).body(CustomerMapper.entityToDTO(customer));
     }

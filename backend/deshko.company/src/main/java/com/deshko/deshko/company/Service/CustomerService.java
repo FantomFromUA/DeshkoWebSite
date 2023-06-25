@@ -61,4 +61,10 @@ public class CustomerService {
     public  Optional<Customer> findByLogin(String login){
         return customerRepository.findByLogin(login);
     }
+
+    public void verifyCustomer(String id){
+        Customer customer = customerRepository.findById(id).get();
+        customer.setEnabled(true);
+        customerRepository.save(customer);
+    }
 }

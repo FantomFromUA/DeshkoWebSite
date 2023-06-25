@@ -1,13 +1,19 @@
 import { Box, Typography, TextField, Grid, Container, Button, IconButton, InputAdornment } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { MdOutlineVisibilityOff, MdOutlineVisibility } from "react-icons/md";
 import { RegistrationCustomerModel } from "../../types/registrationCustomerModel";
 import validator from "validator";
 import { checkIfValidRegestration, registration } from "../../http/userHttp";
 import { error } from "console";
+import * as React from 'react';
+
 
 const SignUpPage = () => {
+
+  const [err, setErr] = React.useState(false);
+  const navigate = useNavigate()
+
   const handleSubmit = (event: any) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -39,18 +45,20 @@ const SignUpPage = () => {
       return;
     }
     checkIfValidRegestration(phone, email, login)
+    .then(() => {
+      const customer : RegistrationCustomerModel = {
+        name,
+        phone,
+        email,
+        login,
+        password
+      };
+      registration(customer).catch((error: Error) => alert(error.message));
+      navigate("/signin")
+    })
     .catch((error : Error) => {
       alert(error.message);
-      return;
     });
-    const customer : RegistrationCustomerModel = {
-      name,
-      phone,
-      email,
-      login,
-      password
-    };
-    registration(customer).catch((error: Error) => alert(error.message))
   };
 
   const parcer = (value : string | undefined) : string => {

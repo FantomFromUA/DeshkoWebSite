@@ -13,7 +13,6 @@ export const checkIfValidRegestration =async (phone: string, email : string, log
     }
 
     const response = await fetch(url, requestOptions);
-    console.log(response);
     
     if(!response.ok){
         throw new Error("Юзер з такими даними вже існує");

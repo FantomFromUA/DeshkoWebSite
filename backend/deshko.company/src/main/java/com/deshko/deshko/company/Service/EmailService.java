@@ -9,7 +9,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ContactEmailService {
+public class EmailService {
 
     @Autowired
     private JavaMailSender javaMailSender;
@@ -42,5 +42,22 @@ public class ContactEmailService {
         message.append("Запитання: \n" + email.getDescription());
 
         return message.toString();
+    }
+
+    public void verificationEmail(String email, String id) {
+        try {
+            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+
+            mimeMessageHelper.setFrom("tipplaygame@gmail.com");
+            mimeMessageHelper.setTo(email);
+            mimeMessageHelper.setSubject("Підтвердіть свою пошту");
+            mimeMessageHelper.setText("Перейдіть за посиланням\nhttp://localhost:9090/email/verification?id=" + id);
+
+            javaMailSender.send(mimeMessage);
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
