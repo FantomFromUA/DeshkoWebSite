@@ -23,6 +23,9 @@ public class Parcel {
     @Column(name = "parcel_id")
     private String id;
 
+    @Column(name = "number")
+    private String number;
+
     @ManyToOne
     @JoinColumn(name = "customer", referencedColumnName = "customer_id")
     private Customer customer;

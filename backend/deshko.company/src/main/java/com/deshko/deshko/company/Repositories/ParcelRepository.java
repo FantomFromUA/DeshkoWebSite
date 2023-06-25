@@ -9,5 +9,6 @@ import java.util.UUID;
 public interface ParcelRepository extends JpaRepository<Parcel, String> {
 
     List<Parcel> findByCustomerId(String customerId);
+    Parcel findByNumber(String number);
 
 }

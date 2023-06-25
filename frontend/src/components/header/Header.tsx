@@ -30,6 +30,7 @@ const Header = () => {
             <Nav.Link href="/about">Про нас</Nav.Link>
             <Nav.Link href="/tracking">Трекінг</Nav.Link>
             <Nav.Link href="/services">Послуги</Nav.Link>
+            <Nav.Link href='/calculator'>Калькулятор</Nav.Link>
             <Nav.Link href="/taryfy">Тарифи</Nav.Link>
             <Nav.Link href="/contact">Контакти</Nav.Link>
           </Nav>

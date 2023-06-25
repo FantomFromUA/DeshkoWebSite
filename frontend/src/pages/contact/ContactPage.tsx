@@ -19,6 +19,11 @@ const containerStyle = {
 };
 
 const ContactPage: React.FC = () => {
+
+  const [name, setName] = React.useState("");
+  const [phoneNumber, setPhoneNumber] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [description, setDescription] = React.useState("");
   
   return (
     <div>

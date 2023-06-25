@@ -10,9 +10,19 @@ import {
 import { AiOutlineCalculator, AiOutlineQuestionCircle } from "react-icons/ai";
 import { BsCalculator } from "react-icons/bs";
 import { BiLogIn } from "react-icons/bi";
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const TrackingHero = () => {
+
+  const navigate = useNavigate();
+
+  const [parcelId, setParcelId] = useState("");
+
+  const findPurcel = () => {
+    navigate(`/parcel/${parcelId}`);
+  }
+
   return (
     <Container
       component="section"
@@ -60,6 +70,8 @@ const TrackingHero = () => {
           <Box component="form" noValidate autoComplete="off">
             <TextField
               placeholder="Введіть номер відправлення"
+              value={parcelId}
+              onChange={e => setParcelId(e.target.value)}
               sx={{
                 width: "75%",
                 mt: 3,
@@ -73,13 +85,13 @@ const TrackingHero = () => {
                 endAdornment: (
                   <InputAdornment position="end">
                     <Button
+                      onClick={() => findPurcel()}
                       color="primary"
                       sx={{
                         "&:hover": {
-                          background: "none",
+                          background: "#dedede",
                         },
                       }}
-                      href="/tracking"
                     >
                       <Typography sx={{ fontWeight: "bold", color: "black" }}>
                         Відстежити

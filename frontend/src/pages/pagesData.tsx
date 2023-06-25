@@ -12,6 +12,7 @@ import SignIn from "./signIn/SignInPage";
 import SignUp from "./signUp/SignUpPage";
 import UserCabinetPage from "./userCabinet/UserCabinetPage";
 import CalculatorPage from "./calculator/CalculatorPage";
+import ParcelInfo from "./parcelInfo/ParcelInfp";
 
 const pagesData: routerType[] = [
     {
@@ -67,6 +68,11 @@ const pagesData: routerType[] = [
         path: "/calculator",
         element: <CalculatorPage/>,
         title: "calculator"
+    },
+    {
+        path: "/parcel/:id",
+        element: <ParcelInfo/>,
+        title: "parcel_info"
     },
     {
         path: "/404",

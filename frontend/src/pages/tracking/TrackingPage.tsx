@@ -10,8 +10,18 @@ import {
   Typography,
 } from "@mui/material";
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 
 const TrackingPage: React.FC = () => {
+
+  const navigate = useNavigate();
+
+  const [parcelId, setParcelId] = React.useState("");
+
+  const findPurcel = () => {
+    navigate(`/parcel/${parcelId}`);
+  }
+
   return (
     <Container
       component="section"
@@ -24,6 +34,8 @@ const TrackingPage: React.FC = () => {
           </Typography>
           <TextField
             placeholder="Введіть номер відправлення"
+            value={parcelId}
+            onChange={e => setParcelId(e.target.value)}
             sx={{
               width: "100%",
               mb: 2,
@@ -36,13 +48,13 @@ const TrackingPage: React.FC = () => {
               endAdornment: (
                 <InputAdornment position="end">
                   <Button
+                    onClick={() => findPurcel()}
                     color="primary"
                     sx={{
                       "&:hover": {
-                        background: "none",
+                        background: "#dedede",
                       },
                     }}
-                    href="/tracking"
                   >
                     <Typography sx={{ fontWeight: "bold", color: "black" }}>
                       Відстежити

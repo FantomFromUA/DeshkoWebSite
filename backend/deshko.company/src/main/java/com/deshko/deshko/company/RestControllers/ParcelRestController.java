@@ -2,6 +2,7 @@ package com.deshko.deshko.company.RestControllers;
 
 import com.deshko.deshko.company.Entity.Enums.ParcelStatus;
 import com.deshko.deshko.company.Entity.Parcel;
+import com.deshko.deshko.company.Mapper.ParcelMapper;
 import com.deshko.deshko.company.Repositories.ParcelRepository;
 import com.deshko.deshko.company.Service.ParcelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +27,13 @@ public class ParcelRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity getParcelById(@PathVariable(name = "id") String id){
-        Parcel parcel = parcelService.getParcelById(id);
+        Parcel parcel = parcelService.getParcelByNumber(id);
 
         if(parcel == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No such parcel");
         }
 
-        return ResponseEntity.status(HttpStatus.OK).body(parcel);
+        return ResponseEntity.status(HttpStatus.OK).body(ParcelMapper.entityToDTO(parcel));
     }
 
     @GetMapping("/customer/{id}")

@@ -35,4 +35,10 @@ public class ParcelService {
 
         return newParcel;
     }
+
+    public Parcel getParcelByNumber(String id) {
+        Parcel parcel = parcelRepository.findByNumber(id);
+
+        return parcel;
+    }
 }
