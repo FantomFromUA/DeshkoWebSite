@@ -6,9 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-import java.util.UUID;
-
 @Data
 @Builder
 @AllArgsConstructor
@@ -35,7 +32,7 @@ public class Customer {
     private String email;
 
     @Column(name = "phone_number", unique = true)
-    private String phoneNumber;
+    private String phone;
 
     @Column(name = "enabled")
     private boolean enabled;

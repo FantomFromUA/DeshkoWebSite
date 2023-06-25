@@ -49,4 +49,16 @@ public class CustomerService {
         return customer.get();
 
     }
+
+    public Optional<Customer> findByEmail(String email){
+        return customerRepository.findByEmail(email);
+    }
+
+    public Optional<Customer> findByPhone(String phone){
+        return customerRepository.findByPhone(phone);
+    }
+
+    public  Optional<Customer> findByLogin(String login){
+        return customerRepository.findByLogin(login);
+    }
 }

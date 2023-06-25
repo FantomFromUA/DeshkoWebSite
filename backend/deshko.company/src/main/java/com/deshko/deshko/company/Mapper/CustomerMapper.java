@@ -11,7 +11,7 @@ public class CustomerMapper {
                 .name(customer.getName())
                 .email(customer.getEmail())
                 .login(customer.getLogin())
-                .phoneNumber(customer.getPhoneNumber())
+                .phoneNumber(customer.getPhone())
                 .build();
 
         return customerDTO;

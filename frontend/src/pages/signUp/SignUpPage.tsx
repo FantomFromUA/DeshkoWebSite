@@ -2,18 +2,61 @@ import { Box, Typography, TextField, Grid, Container, Button, IconButton, InputA
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { MdOutlineVisibilityOff, MdOutlineVisibility } from "react-icons/md";
+import { RegistrationCustomerModel } from "../../types/registrationCustomerModel";
+import validator from "validator";
+import { checkIfValidRegestration, registration } from "../../http/userHttp";
+import { error } from "console";
 
 const SignUpPage = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-      phone: data.get("phone"),
-      name: data.get("name"),
+    const name = parcer(data.get("name")?.toString());
+    const phone = parcer(data.get("phone")?.toString());
+    const email = parcer(data.get("email")?.toString());
+    const login = parcer(data.get("login")?.toString());
+    const password = parcer(data.get("password")?.toString());
+
+    if(name === ""){
+      alert("Заповніть поле з іменем");
+      return;
+    }
+    
+    if(!validator.isMobilePhone(phone)){
+      alert("Введіть коректний номер телефону");
+      return;
+    }
+    if(!validator.isEmail(email)){
+      alert("Введіть коректний емейл");
+      return;
+    }
+    if(login === ""){
+      alert("Заповніть поле з Логіном");
+      return;
+    }
+    if(!validator.isStrongPassword(password)){
+      alert("Пароль повинен містити: 1 букву в вищому регістрі, 1 букву в нижньому регість, 1 цифру, 1 спеціальний символ, та бути завдовжки мінімум 8 символів");
+      return;
+    }
+    checkIfValidRegestration(phone, email, login)
+    .catch((error : Error) => {
+      alert(error.message);
+      return;
     });
+    const customer : RegistrationCustomerModel = {
+      name,
+      phone,
+      email,
+      login,
+      password
+    };
+    registration(customer).catch((error: Error) => alert(error.message))
   };
+
+  const parcer = (value : string | undefined) : string => {
+    if(value === undefined) return "";
+    return value;
+  }
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -71,6 +114,16 @@ const SignUpPage = () => {
             label="Електронна пошта"
             name="email"
             autoComplete="email"
+            autoFocus
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="login"
+            label="Логін"
+            name="login"
+            autoComplete="login"
             autoFocus
           />
            <TextField

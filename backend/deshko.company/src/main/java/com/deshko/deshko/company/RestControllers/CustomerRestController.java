@@ -64,4 +64,23 @@ public class CustomerRestController {
 
         return ResponseEntity.status(HttpStatus.OK).body(CustomerMapper.entityToDTO(customer));
     }
+
+    @GetMapping("/registration/ifExist")
+    public ResponseEntity checkIfCustomerExist(@RequestHeader String email,
+                                               @RequestHeader String phone,
+                                               @RequestHeader String login){
+        if(customerService.findByEmail(email).isPresent()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body('1');
+        }
+
+        if(customerService.findByLogin(login).isPresent()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body('1');
+        }
+
+        if (customerService.findByPhone(phone).isPresent()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body('1');
+        }
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body('1');
+    }
 }
