@@ -1,5 +1,7 @@
-import { Box, Typography, TextField, Grid, Container, Button } from "@mui/material";
+import { Box, Typography, TextField, Grid, Container, Button, IconButton, InputAdornment } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { MdOutlineVisibilityOff, MdOutlineVisibility } from "react-icons/md";
 
 const SignUpPage = () => {
   const handleSubmit = (event: any) => {
@@ -11,6 +13,16 @@ const SignUpPage = () => {
       phone: data.get("phone"),
       name: data.get("name"),
     });
+  };
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
   };
 
   return (
@@ -61,15 +73,33 @@ const SignUpPage = () => {
             autoComplete="email"
             autoFocus
           />
-          <TextField
+           <TextField
             margin="normal"
             required
             fullWidth
             name="password"
             label="Пароль"
-            type="password"
             id="password"
+            type={showPassword ? "text" : "password"}
             autoComplete="current-password"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? (
+                      <MdOutlineVisibilityOff />
+                    ) : (
+                      <MdOutlineVisibility />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
           <Button
             type="submit"

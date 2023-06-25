@@ -1,0 +1,89 @@
+{
+    "shippingPrices": [
+      {
+        "weight": "0,25",
+        "longestSide": "70",
+        "withinRegion": "25",
+        "withinUkraine": "35"
+      },
+      {
+        "weight": "0,5",
+        "longestSide": "70",
+        "withinRegion": "28",
+        "withinUkraine": "35"
+      },
+      {
+        "weight": "1",
+        "longestSide": "70",
+        "withinRegion": "30",
+        "withinUkraine": "35"
+      },
+      {
+        "weight": "2",
+        "longestSide": "70",
+        "withinRegion": "32",
+        "withinUkraine": "40"
+      },
+      {
+        "weight": "5",
+        "longestSide": "70",
+        "withinRegion": "35",
+        "withinUkraine": "45"
+      },
+      {
+        "weight": "10",
+        "longestSide": "70",
+        "withinRegion": "50",
+        "withinUkraine": "60"
+      },
+      {
+        "weight": "15",
+        "longestSide": "70",
+        "withinRegion": "65",
+        "withinUkraine": "75"
+      },
+      {
+        "weight": "20",
+        "longestSide": "70",
+        "withinRegion": "75",
+        "withinUkraine": "85"
+      },
+      {
+        "weight": "30",
+        "longestSide": "70",
+        "withinRegion": "95",
+        "withinUkraine": "100"
+      }
+    ],
+    "pickupPoint": [
+      {
+        "weight": "2",
+        "price": "15,00"
+      },
+      {
+        "weight": "5",
+        "price": "20,00"
+      },
+      {
+        "weight": "10",
+        "price": "25,00"
+      },
+      {
+        "weight": "15",
+        "price": "30,00"
+      },
+      {
+        "weight": "20",
+        "price": "35,00"
+      },
+      {
+        "weight": "30",
+        "price": "40,00"
+      }
+    ],
+    "declaredValue": {
+      "description": "За оцінку відправлення",
+      "price": "1% від повної суми оголошеної цінності, але не менше 1 грн"
+    }
+  }
+  

@@ -28,7 +28,7 @@ const BannerHero = () => {
               <TbSquareRoundedNumber1/>
             </Typography>
             <Typography variant="h6" className="text">
-              Текст1Текст1Текст1Текст1
+              Швидко та якісно працюємо
             </Typography>
           </Grid>
 
@@ -37,7 +37,7 @@ const BannerHero = () => {
               <TbSquareRoundedNumber2/>
             </Typography>
             <Typography variant="h6"  className="text">
-              Текст2Текст2Текст2Текст2
+              Завжди допомагаємо з найоптимальнішим планом доставки
             </Typography>
           </Grid>
 
@@ -46,7 +46,7 @@ const BannerHero = () => {
               <TbSquareRoundedNumber3/>
             </Typography>
             <Typography variant="h6" className="text">
-              Текст3Текст3Текст3Текст3
+              Без проблемно відсилаємо в найдальші куточки планети
             </Typography>
           </Grid>
 

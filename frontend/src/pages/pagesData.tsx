@@ -11,6 +11,7 @@ import TrackingPage from "./tracking/TrackingPage";
 import SignIn from "./signIn/SignInPage";
 import SignUp from "./signUp/SignUpPage";
 import UserCabinetPage from "./userCabinet/UserCabinetPage";
+import CalculatorPage from "./calculator/CalculatorPage";
 
 const pagesData: routerType[] = [
     {
@@ -61,6 +62,11 @@ const pagesData: routerType[] = [
         path: "/user",
         element: <UserCabinetPage/>,
         title: "user"
+    },
+    {
+        path: "/calculator",
+        element: <CalculatorPage/>,
+        title: "calculator"
     },
     {
         path: "/404",

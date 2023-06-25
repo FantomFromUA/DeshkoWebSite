@@ -47,7 +47,7 @@ const DefaultCounterCard: React.FC<CounterCardProps> = ({
         >
           <CountUp start={0} end={count} duration={2}/>
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+        <Typography variant="body2" color="text.secondary" sx={{ mt: 2, textAlign:"center", }}>
           {description}
         </Typography>
       </CardContent>

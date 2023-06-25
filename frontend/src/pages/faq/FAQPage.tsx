@@ -53,13 +53,14 @@ const FAQPage: React.FC = () => {
                   fontWeight: "bold",
                 }}
               >
-                Текст 1
+                Якими видами перевезень займається Deshko Company?
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                Текст 1 - підпис
-                Текст1Текст1Текст1Текст1Текст1Текст1Текст1Текст1
+                Deshko Company спеціалізується на автомобільних вантажних
+                перевезеннях. Вона здійснює перевезення вантажів з країн
+                Євросоюзу до України та в зворотному напрямку.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -80,13 +81,14 @@ const FAQPage: React.FC = () => {
                   fontWeight: "bold",
                 }}
               >
-                Текст 2
+                З яких країн Євросоюзу здійснюється перевезення?
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                Текст 2 - підпис
-                Текст2Текст2Текст2Текст2Текст2Текст2Текст2Текст2
+                Deshko Company здійснює перевезення з усіх країн Євросоюзу.
+                Незалежно від того, з якої країни ви потребуєте перевезення,
+                Deshko Company може надати послуги з доставки вашого вантажу.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -107,13 +109,15 @@ const FAQPage: React.FC = () => {
                   fontWeight: "bold",
                 }}
               >
-                Текст 3
+                Як можу замовити перевезення від Deshko Company?
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                Текст 3 - підпис
-                Текст3Текст3Текст3Текст3Текст3Текст3Текст3Текст3
+                Для замовлення перевезення від Deshko Company ви можете
+                зв'язатися з нашим клієнтським сервісом. Ми надамо вам всю
+                необхідну інформацію щодо процесу замовлення та відповімо на
+                ваші запитання
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -134,13 +138,16 @@ const FAQPage: React.FC = () => {
                   fontWeight: "bold",
                 }}
               >
-                Текст 4
+                Які типи вантажу можуть бути перевезені Deshko Company?
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                Текст 4 - підпис
-                Текст4Текст4Текст4Текст4Текст4Текст4Текст4Текст4
+                Deshko Company здійснює перевезення різних типів вантажу,
+                включаючи палетизований товар, контейнери, великогабаритні
+                вантажі та інше. Вони мають досвід у роботі з різними видами
+                вантажів і можуть забезпечити відповідність вимогам перевезення
+                вашого товару.
               </Typography>
             </AccordionDetails>
           </Accordion>

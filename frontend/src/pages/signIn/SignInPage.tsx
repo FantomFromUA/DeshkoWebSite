@@ -1,4 +1,17 @@
-import { Box, Typography, TextField, Grid, Container, Button, FormControlLabel, Checkbox } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  Grid,
+  Container,
+  Button,
+  FormControlLabel,
+  Checkbox,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import { useState } from "react";
+import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const SignInPage = () => {
@@ -9,6 +22,16 @@ const SignInPage = () => {
       email: data.get("email"),
       password: data.get("password"),
     });
+  };
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
   };
 
   return (
@@ -45,9 +68,27 @@ const SignInPage = () => {
             fullWidth
             name="password"
             label="Пароль"
-            type="password"
             id="password"
+            type={showPassword ? "text" : "password"}
             autoComplete="current-password"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? (
+                      <MdOutlineVisibilityOff />
+                    ) : (
+                      <MdOutlineVisibility />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -62,18 +103,15 @@ const SignInPage = () => {
             Ввійти
           </Button>
           <Grid container>
-            <Grid item xs>
-            </Grid>
+            <Grid item xs></Grid>
             <Grid item>
-              <Link to="/signup" >
-                {"Не маєте аккаунту? Зареєструйтесь."}
-              </Link>
+              <Link to="/signup">{"Не маєте аккаунту? Зареєструйтесь."}</Link>
             </Grid>
           </Grid>
         </Box>
       </Box>
     </Container>
   );
-}
+};
 
 export default SignInPage;
