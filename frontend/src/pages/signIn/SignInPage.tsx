@@ -12,17 +12,43 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { signin } from "../../http/userHttp";
+import { CustomerModel } from "../../types/customerModel";
+import { error } from "console";
 
 const SignInPage = () => {
+
+  const navigate = useNavigate();
+
   const handleSubmit = (event: any) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+    const login = parcer(data.get("email")?.toString());
+    const password = parcer(data.get("password")?.toString());
+
+    if(login === ""){
+      alert("Введіть логін або емейл!");
+      return;
+    }
+
+    if(password === ""){
+      alert("Введіьб пароль!")
+    }
+
+    signin(login, password).then((customer : CustomerModel) => {
+      localStorage.setItem('userInfo', JSON.stringify(customer));
+      window.location.replace("/");
+    }).catch((error : Error) => {
+      alert(error.message)
     });
+    
   };
+
+  const parcer = (value : string | undefined) : string => {
+    if(value === undefined) return "";
+    return value;
+  }
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -57,7 +83,7 @@ const SignInPage = () => {
             required
             fullWidth
             id="email"
-            label="Електронна пошта"
+            label="Електронна пошта або Логін"
             name="email"
             autoComplete="email"
             autoFocus
@@ -89,10 +115,6 @@ const SignInPage = () => {
                 </InputAdornment>
               ),
             }}
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Запамʼятай мене"
           />
           <Button
             type="submit"

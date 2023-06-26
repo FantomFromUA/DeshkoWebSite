@@ -5,13 +5,11 @@ import { MdOutlineVisibilityOff, MdOutlineVisibility } from "react-icons/md";
 import { RegistrationCustomerModel } from "../../types/registrationCustomerModel";
 import validator from "validator";
 import { checkIfValidRegestration, registration } from "../../http/userHttp";
-import { error } from "console";
 import * as React from 'react';
 
 
 const SignUpPage = () => {
 
-  const [err, setErr] = React.useState(false);
   const navigate = useNavigate()
 
   const handleSubmit = (event: any) => {
@@ -32,14 +30,17 @@ const SignUpPage = () => {
       alert("Введіть коректний номер телефону");
       return;
     }
+
     if(!validator.isEmail(email)){
       alert("Введіть коректний емейл");
       return;
     }
+
     if(login === ""){
       alert("Заповніть поле з Логіном");
       return;
     }
+
     if(!validator.isStrongPassword(password)){
       alert("Пароль повинен містити: 1 букву в вищому регістрі, 1 букву в нижньому регість, 1 цифру, 1 спеціальний символ, та бути завдовжки мінімум 8 символів");
       return;
@@ -54,6 +55,7 @@ const SignUpPage = () => {
         password
       };
       registration(customer).catch((error: Error) => alert(error.message));
+      alert("Тепер підтвердіть свою пошту");
       navigate("/signin")
     })
     .catch((error : Error) => {

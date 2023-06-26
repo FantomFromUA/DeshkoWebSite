@@ -1,15 +1,11 @@
 package com.deshko.deshko.company.Service;
 
-import com.deshko.deshko.company.DTO.CustomerSingIn;
 import com.deshko.deshko.company.Entity.Customer;
 import com.deshko.deshko.company.Repositories.CustomerRepository;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class CustomerService {
@@ -38,15 +34,15 @@ public class CustomerService {
         return customer;
     }
 
-    public Customer singIn(CustomerSingIn customerSingIn) {
+    public Customer singIn(String login, String password) {
 
-        Optional<Customer> customer = customerRepository.findByLoginAndPassword(customerSingIn.getLogin(), customerSingIn.getPassword());
+        Optional<Customer> customer = customerRepository.findByLoginAndPassword(login, password);
 
-        if(customer.isEmpty() || !customer.get().isEnabled()){
-            return null;
+        if(customer.isEmpty()){
+            customer = customerRepository.findByEmailAndPassword(login, password);
         }
 
-        return customer.get();
+        return customer.orElse(null);
 
     }
 

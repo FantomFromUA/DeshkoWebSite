@@ -2,6 +2,7 @@ import { Button, Container, Grid, Typography } from "@mui/material";
 import * as React from "react";
 
 const RegistrationBlock = () => {
+
   return (
     <Container
       component="section"
@@ -10,7 +11,7 @@ const RegistrationBlock = () => {
         py: 10,
         mb: 5,
         background: "#042c4b",
-        minWidth: "100vw",
+        minWidth: "100%",
       }}
     >
       <Grid

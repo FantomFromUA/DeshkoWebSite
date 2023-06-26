@@ -6,8 +6,25 @@ import BannerHero from "../../components/bannerHero/BannerHero";
 import RegestrationBlock from "../../components/registrationBlock/RegistrationBlock";
 import { Typography } from "@mui/material";
 import InfoBar from "../../components/infoBar/InfoBar";
+import { CustomerModel } from "../../types/customerModel";
 
 const AboutPage: React.FC = () => {
+  const [customer, setCustomer] = React.useState<CustomerModel | null>(null);
+
+  React.useEffect(() => {
+    const customerJSON = localStorage.getItem("userInfo");
+    
+    if(customerJSON === null){
+      setCustomer(null);
+      return;
+    }
+    setCustomer(JSON.parse(parcer(localStorage.getItem("userInfo"))));
+  }, [])
+
+  const parcer = (value : string | null) : string => {
+    if(value === null) return "";
+    return value;
+  }
   return (
     <div>
       <BannerHero />
@@ -134,7 +151,7 @@ const AboutPage: React.FC = () => {
           </div>
         </div>
       </div>
-      <RegestrationBlock />
+      {customer === null && <RegestrationBlock />}
       <QuestionHero />
     </div>
   );

@@ -14,8 +14,27 @@ import {
   Divider,
 } from "@mui/material";
 import ServicesBlock from "../../components/servicesBlock/ServicesBlock";
+import { CustomerModel } from "../../types/customerModel";
 
 const AboutPage: React.FC = () => {
+
+  const [customer, setCustomer] = React.useState<CustomerModel | null>(null);
+
+  React.useEffect(() => {
+    const customerJSON = localStorage.getItem("userInfo");
+    
+    if(customerJSON === null){
+      setCustomer(null);
+      return;
+    }
+    setCustomer(JSON.parse(parcer(localStorage.getItem("userInfo"))));
+  }, [])
+
+  const parcer = (value : string | null) : string => {
+    if(value === null) return "";
+    return value;
+  }
+
   return (
     <div>
       <TrackingHero />
@@ -65,7 +84,7 @@ const AboutPage: React.FC = () => {
         sx={{ backgroundColor: "#042c4b", borderBottomWidth: 4, mt: 4 }}
       />
       <ServicesBlock />
-      <RegestrationBlock />
+      {customer === null && <RegestrationBlock />}
       <QuestionHero />
     </div>
   );

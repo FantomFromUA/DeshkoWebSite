@@ -12,6 +12,8 @@ import java.util.UUID;
 public interface CustomerRepository extends JpaRepository<Customer, String> {
 
     Optional<Customer> findByLoginAndPassword(String login, String password);
+
+    Optional<Customer> findByEmailAndPassword(String email, String password);
     Optional<Customer> findByLogin(String login);
     Optional<Customer> findByPhone(String number);
     Optional<Customer> findByEmail(String email);
