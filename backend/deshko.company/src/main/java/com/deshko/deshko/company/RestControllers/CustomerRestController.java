@@ -1,6 +1,5 @@
 package com.deshko.deshko.company.RestControllers;
 
-import com.deshko.deshko.company.DTO.CustomerSingIn;
 import com.deshko.deshko.company.Entity.Customer;
 import com.deshko.deshko.company.Mapper.CustomerMapper;
 import com.deshko.deshko.company.Service.CustomerService;
@@ -53,18 +52,19 @@ public class CustomerRestController {
 
         Customer newCustomer = customerService.postCustomer(customer);
 
-        return ResponseEntity.status(HttpStatus.OK).body(CustomerMapper.entityToDTO(customer));
+        return ResponseEntity.status(HttpStatus.OK).body(CustomerMapper.entityToDTO(newCustomer));
     }
 
-    @GetMapping("/singin")
-    public ResponseEntity signIn(@RequestBody CustomerSingIn customerSingIn){
-        Customer customer = customerService.singIn(customerSingIn);
+    @GetMapping("/registration/sign-in")
+    public ResponseEntity checkIfCustomerExist(@RequestHeader String login,
+                                               @RequestHeader String password){
+        Customer customer = customerService.singIn(login, password);
 
         if(customer == null){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Something went wrong");
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body('1');
         }
 
-        return ResponseEntity.status(HttpStatus.OK).body(CustomerMapper.entityToDTO(customer));
+        return  ResponseEntity.status(HttpStatus.OK).body(CustomerMapper.entityToDTO(customer));
     }
 
     @GetMapping("/registration/ifExist")

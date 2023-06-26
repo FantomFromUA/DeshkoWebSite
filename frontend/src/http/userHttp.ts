@@ -39,3 +39,24 @@ export const registration = async (customer : RegistrationCustomerModel) : Promi
 
     return responseJSON;
 }
+
+export const signin = async (login: string, password: string) : Promise<CustomerModel> => {
+    const url = `http://localhost:9090/api/customer/registration/sign-in`;
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            login, 
+            password
+        },
+    };
+
+    const response = await fetch(url, requestOptions);
+
+    if(!response.ok){
+        throw new Error("1231231231231");
+    }
+
+    const responseJSON = await response.json();
+    
+    return responseJSON;
+}

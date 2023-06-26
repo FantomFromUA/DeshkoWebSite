@@ -2,6 +2,8 @@ import React from "react";
 import { Button, Container, Typography } from "@mui/material";
 
 const ErrorPage: React.FC = () => {
+  console.log(123);
+  
   return (
     <Container
       sx={{

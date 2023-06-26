@@ -9,9 +9,10 @@ import {
 } from "@mui/material";
 import { AiOutlineCalculator, AiOutlineQuestionCircle } from "react-icons/ai";
 import { BsCalculator } from "react-icons/bs";
-import { BiLogIn } from "react-icons/bi";
+import { BiLogIn, BiUser } from "react-icons/bi";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { CustomerModel } from "../../types/customerModel";
 
 const TrackingHero = () => {
 
@@ -21,6 +22,24 @@ const TrackingHero = () => {
 
   const findPurcel = () => {
     navigate(`/parcel/${parcelId}`);
+  }
+
+  const [customer, setCustomer] = React.useState<CustomerModel | null>(null);
+
+  React.useEffect(() => {
+    const customerJSON = localStorage.getItem("userInfo");
+    console.log(customerJSON);
+    
+    if(customerJSON === null){
+      setCustomer(null);
+      return;
+    }
+    setCustomer(JSON.parse(parcer(localStorage.getItem("userInfo"))));
+  }, [])
+
+  const parcer = (value : string | null) : string => {
+    if(value === null) return "";
+    return value;
   }
 
   return (
@@ -48,7 +67,6 @@ const TrackingHero = () => {
           <Typography
             variant="h3"
             sx={{
-              fontFamily: '"Helvetica Neue"',
               fontWeight: "bold",
               color: "white",
               mb: 2,
@@ -149,7 +167,8 @@ const TrackingHero = () => {
               </Button>
             </Grid>
             <Grid item>
-              <Button
+              { customer === null
+              ? <Button
                 startIcon={<BiLogIn />}
                 variant="contained"
                 size="medium"
@@ -164,6 +183,22 @@ const TrackingHero = () => {
               >
                 Зареєструватись
               </Button>
+              : <Button
+              startIcon={<BiUser/>}
+              variant="contained"
+              size="medium"
+              href="/user"
+              sx={{
+                minWidth: "17vw",
+                py: 3,
+                "&:hover": {
+                  color: "white",
+                },
+              }}
+            >
+              Кабінет
+            </Button>
+              }
             </Grid>
             <Grid item>
               <Button

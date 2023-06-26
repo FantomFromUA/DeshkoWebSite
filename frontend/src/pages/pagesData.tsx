@@ -4,7 +4,6 @@ import AboutPage from "./about/AboutPage";
 import ErrorPage from "./error/ErrorPage";
 import FAQPage from "./faq/FAQPage";
 import ContactPage from "./contact/ContactPage";
-import ServicesPage from "./services/ServicesPage";
 import TaryfyPage from "./taryfy/TaryfyPage";
 import MainPage from "./main/MainPage";
 import TrackingPage from "./tracking/TrackingPage";
@@ -32,11 +31,6 @@ const pagesData: routerType[] = [
         path: "/contact",
         element: <ContactPage/>,
         title: "contact"
-    },
-    {
-        path: "/services",
-        element: <ServicesPage/>,
-        title: "services"
     },
     {
         path: "/taryfy",
@@ -69,13 +63,8 @@ const pagesData: routerType[] = [
         title: "calculator"
     },
     {
-        path: "/404",
-        element: <ErrorPage/>,
-        title: "error"
-    },
-    {
       path: "*", 
-      element: <Navigate to="/404" replace />,
+      element: <ErrorPage/>,
       title: "error"
     }
   ];
