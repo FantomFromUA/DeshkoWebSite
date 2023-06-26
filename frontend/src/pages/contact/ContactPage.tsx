@@ -1,6 +1,6 @@
 import * as React from "react";
 import ContactForm from "../../components/contactForm/ContactForm";
-import { Container, Grid, Typography, Button } from "@mui/material";
+import { Container, Grid, Typography, Button, Box } from "@mui/material";
 import { BsEnvelopeFill, BsTelephoneFill } from "react-icons/bs";
 import { FaTelegram } from "react-icons/fa";
 import { TbWorld } from "react-icons/tb";
@@ -20,11 +20,11 @@ const containerStyle = {
 
 const ContactPage: React.FC = () => {
   
-  return (
-    <div>
+  return (    
+      <Box  sx={{ backgroundColor: "#fbfafa", minWidth: "100vw" }}>
       <Container
         component="section"
-        sx={{ backgroundColor: "#fbfafa", minWidth: "100vw", my: 0, py: 10 }}
+        sx={{ backgroundColor: "#fbfafa", py: 10 }}
       >
         <Grid container spacing={1} display="flex">
           <Grid item xs={6}>
@@ -95,7 +95,7 @@ const ContactPage: React.FC = () => {
       </Container>
 
       <ContactForm />
-    </div>
+      </Box>
   );
 };
 

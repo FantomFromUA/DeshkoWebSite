@@ -5,7 +5,7 @@ export interface ParcelModel{
     number: string,
     customer: CustomerModel,
     dispatcher: string,
-    deppartment: DepartmentModel,
+    department: DepartmentModel,
     status: string,
     dateOfShipment: Date,
     dateOfReceiving: Date
