@@ -52,4 +52,16 @@ public class ParcelRestController {
 
         return ResponseEntity.status(HttpStatus.OK).body(newParcel);
     }
+
+    @GetMapping("/calculate/price")
+    public ResponseEntity calculateParcelPrice(@RequestParam(name = "distance") Double distance,
+                                               @RequestParam(name = "type") String type,
+                                               @RequestParam(name = "weight") Double weight,
+                                               @RequestParam(name = "side") Double side,
+                                               @RequestParam(name = "itemPrice") Double itemPrice
+    ){
+        Double price = parcelService.calculatePrice(distance, type, weight, side, itemPrice);
+
+        return ResponseEntity.status(HttpStatus.OK).body(price);
+    }
 }

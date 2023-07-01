@@ -37,8 +37,9 @@ const Tab2: React.FC = () => {
       <Divider sx={{ background: "black", my: 4 }} />
 
       <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
-        2. Параметри відправлення
+        2. Тип відплавлення
       </Typography>
+
       <RadioGroup row>
         <FormControlLabel value="first" label="Посилка" control={<Radio />} />
         <FormControlLabel
@@ -48,6 +49,11 @@ const Tab2: React.FC = () => {
         />
         <FormControlLabel value="third" label="Лист" control={<Radio />} />
       </RadioGroup>
+
+      <Divider sx={{ background: "black", my: 4 }} />
+      <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
+        3. Параметри відправлення
+      </Typography>
 
       <Box
         sx={{
@@ -63,14 +69,29 @@ const Tab2: React.FC = () => {
           sx={{ width: "30%" }}
           InputProps={{
             endAdornment: <InputAdornment position="end">кг</InputAdornment>,
+            inputProps: {min: 0}
           }}
+          type="number"
         />
         <TextField
           label="Максимальна сторона, см"
           sx={{ width: "30%" }}
           InputProps={{
             endAdornment: <InputAdornment position="end">см</InputAdornment>,
+            inputProps: {min: 0}
           }}
+          type="number"
+        />
+        <TextField
+          label="Оголошена вартість, грн"
+          sx={{ width: "30%" }}
+          InputProps={{
+            endAdornment: <InputAdornment position="end">грн</InputAdornment>,
+            inputProps: {min: 0}
+          }}
+          type="number"
+          // value={itemPrice}
+          // onChange={e => setItemPrice(e.target.value)}
         />
       </Box>
       <Divider sx={{ background: "black", my: 4 }} />
@@ -94,9 +115,7 @@ const Tab2: React.FC = () => {
           Розрахувати вартість
         </Button>
         <Typography sx={{ color: "text.secondary", mx: 3 }}>
-          * Під час розрахунку ви отримаєте приблизну вартість відправлення.{" "}
-          <br />
-          Курс долара: 36.5686 грн
+          * Під час розрахунку ви отримаєте приблизну вартість відправлення.
         </Typography>
       </Box>
       {/* Бокс для виведення результатів */}
