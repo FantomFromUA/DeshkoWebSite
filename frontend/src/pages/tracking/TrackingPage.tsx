@@ -10,16 +10,20 @@ import {
   Typography,
 } from "@mui/material";
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
+import { getParcelById } from "../../http/parcelHttp";
+import { ParcelModel } from "../../types/parcelModel";
 
 const TrackingPage: React.FC = () => {
-
-  const navigate = useNavigate();
 
   const [parcelId, setParcelId] = React.useState("");
 
   const findPurcel = () => {
-    navigate(`/parcel/${parcelId}`);
+    getParcelById(parcelId).then((parcel : ParcelModel) => {
+        console.log(parcel);
+        
+    }).catch((error : Error) =>{
+        alert(error.message);
+    });
   }
 
   return (

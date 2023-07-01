@@ -9,7 +9,7 @@ public class ParcelMapper {
         ParcelDTO parcelDTO = ParcelDTO.builder()
                 .number(parcel.getNumber())
                 .customer(CustomerMapper.entityToDTO(parcel.getCustomer()))
-                .dispatcher(parcel.getDispatcher())
+                .dispatcher(CustomerMapper.entityToDTO(parcel.getDispatcher()))
                 .department(parcel.getDepartment())
                 .status(parcel.getStatus().toString())
                 .dateOfShipment(parcel.getDateOfShipment())

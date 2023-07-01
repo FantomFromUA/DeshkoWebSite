@@ -26,7 +26,7 @@ public class ParcelService {
     }
 
     public List<Parcel> getParcelByCustomerId(String id) {
-        List<Parcel> parcels = parcelRepository.findByCustomerId(id);
+        List<Parcel> parcels = parcelRepository.findParcelsByCustomerOrDispatcherId(id);
         return parcels;
     }
 

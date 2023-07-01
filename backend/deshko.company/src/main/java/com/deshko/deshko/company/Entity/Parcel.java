@@ -30,8 +30,9 @@ public class Parcel {
     @JoinColumn(name = "customer", referencedColumnName = "customer_id")
     private Customer customer;
 
-    @Column(name = "dispatcher")
-    private String dispatcher;
+    @ManyToOne
+    @JoinColumn(name = "dispatcher", referencedColumnName = "customer_id")
+    private Customer dispatcher;
 
     @ManyToOne
     @JoinColumn(name = "address", referencedColumnName = "department_id")

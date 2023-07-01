@@ -17,7 +17,7 @@ public class ParcelDTO {
     private CustomerDTO customer;
 
     private String number;
-    private String dispatcher;
+    private CustomerDTO dispatcher;
     private Department department;
     private  String status;
     private LocalDateTime dateOfShipment;
