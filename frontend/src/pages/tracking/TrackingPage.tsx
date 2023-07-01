@@ -16,15 +16,25 @@ import { ParcelModel } from "../../types/parcelModel";
 const TrackingPage: React.FC = () => {
 
   const [parcelId, setParcelId] = React.useState("");
+  const [error, setError] = React.useState<string | undefined>();
+  const [parcel, setParcel] = React.useState<ParcelModel | undefined>();
 
   const findPurcel = () => {
-    getParcelById(parcelId).then((parcel : ParcelModel) => {
+    if (parcelId === "") {
+      return;
+    }
+
+    getParcelById(parcelId)
+      .then((parcel: ParcelModel) => {
+        setParcel(parcel);
+        setError(undefined);
         console.log(parcel);
-        
-    }).catch((error : Error) =>{
-        alert(error.message);
-    });
-  }
+      })
+      .catch((error: Error) => {
+        setParcel(undefined);
+        setError(error.message);
+      });
+  };
 
   return (
     <Container
@@ -39,7 +49,7 @@ const TrackingPage: React.FC = () => {
           <TextField
             placeholder="Введіть номер відправлення"
             value={parcelId}
-            onChange={e => setParcelId(e.target.value)}
+            onChange={(e) => setParcelId(e.target.value)}
             sx={{
               width: "100%",
               mb: 2,
@@ -83,10 +93,22 @@ const TrackingPage: React.FC = () => {
             </CardContent>
           </Card>
         </Grid>
+
         <Grid item sm={12} md={6} lg={6}>
-          <Box>
-            {/* Після натиску кнопки тут відображати результат */}
-          </Box>
+          {parcel ? (
+            <Box>
+              <Typography>Відправник: {parcel.customer.name}</Typography>
+              <Typography>Отримувач: {parcel.dispatcher.name}</Typography>
+              <Typography>Адрес доставки: {`${parcel.department.region},  ${parcel.department.city}, ${parcel.department.street} - ${parcel.department.buildingNumber}`}</Typography>
+              <Typography>Статус: {parcel.status}</Typography>
+              <Typography>Дата відправлення: {parcel.dateOfShipment.toString()}</Typography>
+              {parcel.dateOfReceiving &&
+              <Typography>Дата отримування: {typeof parcel.dateOfReceiving} </Typography>
+              }
+            </Box>
+          ) : (
+            error && <Typography>{error}</Typography>
+          )}
         </Grid>
       </Grid>
     </Container>
