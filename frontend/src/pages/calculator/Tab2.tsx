@@ -86,7 +86,7 @@ const Tab2: React.FC = () => {
       </Typography>
 
       <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Звідки</InputLabel>
+          <InputLabel id="demo-simple-select-label">Країна призначення</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -104,7 +104,7 @@ const Tab2: React.FC = () => {
       <Divider sx={{ background: "black", my: 4 }} />
 
       <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
-        2. Тип відплавлення
+        2. Тип відправлення
       </Typography>
 
       <RadioGroup row>
@@ -132,14 +132,12 @@ const Tab2: React.FC = () => {
       <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
         3. Параметри відправлення
       </Typography>
-
       <Box
         sx={{
           display: "flex",
           justifyContent: "space-around",
           alignItems: "center",
           width: "100%",
-          mt: 2,
         }}
       >
         <TextField

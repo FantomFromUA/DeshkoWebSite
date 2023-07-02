@@ -132,24 +132,6 @@ const Tab1: React.FC = () => {
             ))}
           </Select>
         </FormControl>
-        {/* <TextField
-          required
-          id="place-from"
-          label="Звідки"
-          sx={{ width: "40%" }}
-          margin="normal"
-          value={from}
-          onChange={e => setFrom(e.target.value)}
-        />
-        <TextField
-          required
-          id="place-to"
-          label="Куди"
-          sx={{ width: "40%" }}
-          margin="normal"
-          value={destination}
-          onChange={e => setDestination(e.target.value)}
-        /> */}
       </Box>
       <Divider sx={{ background: "black", my: 4 }} />
 
