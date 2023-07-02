@@ -29,8 +29,6 @@ const Tab1: React.FC = () => {
 
   const [price, setPrice] = React.useState();
 
-  const [age, setAge] = React.useState("");
-
   const calculate = () => {
     if(!validate()){
       return;

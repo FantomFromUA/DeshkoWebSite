@@ -71,12 +71,16 @@ public class ParcelPriceCalculator {
             }
         }
 
+        if(weight > 30) res += weightPrices.get(30.0)[abr];
+
         for(Double key : sidePrices.keySet()){
             if(side <= key){
                 res += sidePrices.get(key)[abr];
                 break;
             }
         }
+
+        if(weight > 100) res += sidePrices.get(100.0)[abr];
 
         res += (itemPrice / 100);
         res *= typeIndex.get(type);

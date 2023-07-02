@@ -30,7 +30,7 @@ const StatsBlock = () => {
           <DefaultCounterCard
             count={30}
             title="Понад"
-            description="країн куди ми завжди готові надіслати ваші посилки"
+            description="країн, куди ми завжди готові надіслати ваші посилки"
           />
         </Grid>
         <Grid item xs={9} md={3} sx={{width: "100%"}}>

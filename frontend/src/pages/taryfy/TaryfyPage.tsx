@@ -40,7 +40,7 @@ const TaryfyPage = () => {
               </StyledTableCell>
               <StyledTableCell style={{ width: "35%" }}>
                 <Typography variant="body2">
-                  За кордон (Европа)
+                  За кордон (Європа)
                   <br />
                   (до 21 днів)
                 </Typography>
@@ -115,7 +115,7 @@ const TaryfyPage = () => {
               </StyledTableCell>
               <StyledTableCell style={{ width: "35%" }}>
                 <Typography variant="body2">
-                  За кордон (Европа)
+                  За кордон (Європа)
                   <br />
                   (до 21 днів)
                 </Typography>
