@@ -15,6 +15,7 @@ import { ParcelModel } from "../../types/parcelModel";
 import { useParams, useSearchParams } from "react-router-dom";
 
 const TrackingPage: React.FC = () => {
+
   const [parcelId, setParcelId] = React.useState("");
   const [error, setError] = React.useState<string | undefined>();
   const [parcel, setParcel] = React.useState<ParcelModel | undefined>();
@@ -105,7 +106,7 @@ const TrackingPage: React.FC = () => {
           {parcel ? (
             <Box>
               <Typography>Відправник: {parcel.customer.name}</Typography>
-              <Typography>Отримувач: {parcel.dispatcher}</Typography>
+              <Typography>Отримувач: {parcel.dispatcher.name}</Typography>
               <Typography>Адрес доставки: {`${parcel.department.region},  ${parcel.department.city}, ${parcel.department.street} - ${parcel.department.buildingNumber}`}</Typography>
               <Typography>Статус: {parcel.status}</Typography>
               <Typography>Дата відправлення: {parcel.dateOfShipment.toString()}</Typography>

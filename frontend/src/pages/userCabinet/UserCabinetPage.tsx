@@ -1,5 +1,5 @@
-import React from "react";
-import { Typography, Container, Box, Chip } from "@mui/material";
+import React, { SyntheticEvent, useEffect } from "react";
+import { Typography, Container, Box, Chip, Divider, Tabs, Tab } from "@mui/material";
 import {
   DataGrid,
   GridCellParams,
@@ -8,76 +8,102 @@ import {
   GridToolbar,
 } from "@mui/x-data-grid";
 import { Button } from "react-bootstrap";
+import { ParcelModel } from "../../types/parcelModel";
+import { CustomerModel } from "../../types/customerModel";
+import { getUserParcels } from "../../http/parcelHttp";
+import ErrorPage from "../error/ErrorPage";
+import Tab1 from "./Tab1";
+
+interface TabPanelProps {
+  value: number;
+  index: number;
+  children: React.ReactNode;
+}
+
+const TabPanel: React.FC<TabPanelProps> = ({ value, index, children }) => {
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`tabpanel-${index}`}
+      aria-labelledby={`tab-${index}`}
+    >
+      {value === index && <Box p={3}>{children}</Box>}
+    </div>
+  );
+};
+
 
 const UserCabinetPage: React.FC = () => {
-  const rows: GridRowsProp = [
-    {
-      id: 1,
-      dispatcher: "Hello",
-      department: "World",
-      dateOfShipment: "01.01.2003",
-      status: "відміна",
-    },
-    {
-      id: 2,
-      dispatcher: "DataGridPro",
-      department: "is Awesome",
-      status: "в дорозі",
-    },
-    { id: 3, dispatcher: "MUI", department: "is Amazing", status: "отримано" },
-  ];
 
-  const columns: GridColDef[] = [
-    { field: "id", headerName: "Номер", width: 150 },
-    { field: "dateOfShipment", headerName: "Дата доставки", width: 150 },
-    { field: "dispatcher", headerName: "Отримувач", width: 250 },
-    { field: "department", headerName: "Адреса отримання", width: 250 },
-    {
-      field: "status",
-      headerName: "Статус",
-      width: 150,
-      valueGetter: (params: GridCellParams) => {
-        const { value } = params;
-        switch (value) {
-          case "обробляється":
-            return <Chip label="Oбробляється" size="small" />;
-          case "в дорозі":
-            return <Chip label="В дорозі" color="primary" size="small" />;
-          case "отримано":
-            return <Chip label="Отримано" color="success" size="small" />;
-          case "відміна":
-            return <Chip label="Відміна" color="error" size="small" />;
-          default:
-            return "-";
-        }
-      },
-      renderCell: (params: GridCellParams<any, any>) => {
-        const { value } = params;
-        return <div>{value}</div>;
-      },
-    },
-    {
-      field: "dateOfReceiving",
-      type: "dateTime",
-      headerName: "Дата отримання",
-      width: 150,
-    },
-  ];
+  const [parcels, setParcels] = React.useState<ParcelModel[]>([]);
+  const [customer, setCustomer] = React.useState<CustomerModel | null>();
 
-  const renderCell = (params: GridCellParams<any, any>) => {
-    if (
-      params.value === undefined ||
-      params.value === null ||
-      params.value === ""
-    ) {
-      return <div>&mdash;</div>;
+  const [value, setValue] = React.useState<number>(0);
+
+  const [rows1, setRows1] = React.useState<GridRowsProp>([]);
+  const [rows2, setRows2] = React.useState<GridRowsProp>([]);
+
+  React.useEffect(() => {
+    const customerJSON = localStorage.getItem("userInfo");
+    
+    if(customerJSON === null){
+      setCustomer(null);
+      return;
     }
-    return params.value;
+    const user : CustomerModel = JSON.parse(parcer(localStorage.getItem("userInfo")));
+    
+    setCustomer(user);
+    
+    getUserParcels(user?.id).then((parcelsResponse : ParcelModel[]) => {
+      setParcels(parcelsResponse);
+    }).catch(error => {
+      console.log(error.message);
+      
+    });
+  }, [])
+
+  const parcer = (value : string | null) : string => {
+    if(value === null) return "";
+    return value;
+  }
+  
+  React.useEffect(() => {
+    const newRows1 = [];
+    const newRows2 = [];
+    for(let i = 0; i < parcels.length; i++){
+      let parcel = parcels[i];
+      
+      let row = {
+        id: parcel.number,
+        dateOfShipment: parcel.dateOfShipment.toString(),
+        dispatcher: parcel.dispatcher.name,
+        customer: parcel.customer.name,
+        department: `${parcel.department.region}, ${parcel.department.city}, вул. ${parcel.department.street}, ${parcel.department.buildingNumber}`,
+        status: parcel.status,
+        dateOfReceiving: parcel.dateOfReceiving
+      }
+      if(customer?.id === parcel.customer.id) newRows1.push(row);
+      else newRows2.push(row)
+    }
+    setRows1(newRows1);
+    setRows2(newRows2);
+  }, [parcels])
+
+  
+    
+  if(customer === null){
+    return <ErrorPage/>
+  }
+
+
+  const handleChange = (event: SyntheticEvent, newValue: number) => {
+    setValue(newValue);
   };
 
   return (
     <Container sx={{ my: 5 }}>
-      <Typography variant="h3">Вітаємо - UserName</Typography>
+      <Typography variant="h3">Вітаємо - {customer?.name}</Typography>
       <Box
         display="flex"
         alignItems="center"
@@ -89,19 +115,51 @@ const UserCabinetPage: React.FC = () => {
         </Typography>
         <Button href="/tracking">Відслідкувати посилку</Button>
       </Box>
-      <Box m="40px 0 0 0" height="75vh">
-        <DataGrid
-          sx={{ my: 5, "& .MuiDataGrid-footerContainer p": { marginTop: 2 } }}
-          rows={rows}
-          columns={columns.map((column) => ({
-            ...column,
-            renderCell,
-          }))}
-          components={{
-            Toolbar: GridToolbar,
-          }}
-        />
-      </Box>
+      <Container
+        sx={{
+          boxShadow:
+            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
+            mb: 6
+        }}
+      >
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        centered
+        variant="fullWidth"
+      >
+          <Tab
+            label="Вхідні посилки"
+            sx={{
+              py: 5,
+              "&.Mui-selected": {
+                color: "white",
+                backgroundColor: "green",
+                transition: "background-color 0.5s ease-out",
+              },
+            }}
+          />
+          <Tab
+            label="Вихідні посилки"
+            sx={{
+              py: 5,
+              "&.Mui-selected": {
+                color: "white",
+                backgroundColor: "green",
+                transition: "background-color 0.8s ease-out",
+              },
+            }}
+          />
+      </Tabs>
+
+        <TabPanel value={value} index={0}>
+          <Tab1 rows={rows1}/>
+        </TabPanel>
+
+        <TabPanel value={value} index={1}>
+          <Tab1 rows={rows2}/>
+        </TabPanel>
+      </Container>
     </Container>
   );
 };

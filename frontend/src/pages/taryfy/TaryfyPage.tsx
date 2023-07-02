@@ -20,36 +20,29 @@ const TaryfyPage = () => {
           <TableHead>
             <StyledTableHeadRow>
               <StyledTableCell colSpan={4}>
-                Вартість пересилання (відділення–відділення), грн із ПДВ
+                Вартість перевезення за кілограми
               </StyledTableCell>
             </StyledTableHeadRow>
             <TableRow>
-              <StyledTableCell style={{ width: "25%" }}>
+              <StyledTableCell style={{ width: "30%" }}>
                 <Typography variant="body2">
                   Вага
                   <br />
                   (до вказаної включно)
                 </Typography>
               </StyledTableCell>
-              <StyledTableCell style={{ width: "25%" }}>
-                <Typography variant="body2">
-                  Найдовша сторона
-                  <br />
-                  (до вказаної включно)
-                </Typography>
-              </StyledTableCell>
-              <StyledTableCell style={{ width: "25%" }}>
-                <Typography variant="body2">
-                  У межах області
-                  <br />
-                  (до 4 днів, до 3 днів у межах міста)
-                </Typography>
-              </StyledTableCell>
-              <StyledTableCell style={{ width: "25%" }}>
+              <StyledTableCell style={{ width: "35%" }}>
                 <Typography variant="body2">
                   У межах України
                   <br />
-                  (до 6 днів, до 4 днів між обласними центрами)
+                  (до 4 днів)
+                </Typography>
+              </StyledTableCell>
+              <StyledTableCell style={{ width: "35%" }}>
+                <Typography variant="body2">
+                  За кордон (Европа)
+                  <br />
+                  (до 21 днів)
                 </Typography>
               </StyledTableCell>
             </TableRow>
@@ -57,84 +50,108 @@ const TaryfyPage = () => {
           <TableBody>
             <TableRow>
               <StyledTableCell>0,25 кг</StyledTableCell>
-              <StyledTableCell rowSpan={9}>70 см</StyledTableCell>
-              <StyledTableCell>25</StyledTableCell>
-              <StyledTableCell>35</StyledTableCell>
+              <StyledTableCell>25 грн</StyledTableCell>
+              <StyledTableCell>50 грн</StyledTableCell>
             </TableRow>
             <TableRow>
               <StyledTableCell>0,5 кг</StyledTableCell>
-              <StyledTableCell>28</StyledTableCell>
-              <StyledTableCell>35</StyledTableCell>
+              <StyledTableCell>28 грн</StyledTableCell>
+              <StyledTableCell>56 грн</StyledTableCell>
             </TableRow>
             <TableRow>
               <StyledTableCell>1 кг</StyledTableCell>
-              <StyledTableCell>30</StyledTableCell>
-              <StyledTableCell>35</StyledTableCell>
+              <StyledTableCell>30 грн</StyledTableCell>
+              <StyledTableCell>60 грн</StyledTableCell>
             </TableRow>
             <TableRow>
               <StyledTableCell>2 кг</StyledTableCell>
-              <StyledTableCell>32</StyledTableCell>
-              <StyledTableCell>40</StyledTableCell>
+              <StyledTableCell>32 грн</StyledTableCell>
+              <StyledTableCell>64 грн</StyledTableCell>
             </TableRow>
             <TableRow>
               <StyledTableCell>5 кг</StyledTableCell>
-              <StyledTableCell>35</StyledTableCell>
-              <StyledTableCell>45</StyledTableCell>
+              <StyledTableCell>35 грн</StyledTableCell>
+              <StyledTableCell>70 грн</StyledTableCell>
             </TableRow>
             <TableRow>
               <StyledTableCell>10 кг</StyledTableCell>
-              <StyledTableCell>50</StyledTableCell>
-              <StyledTableCell>60</StyledTableCell>
+              <StyledTableCell>50 грн</StyledTableCell>
+              <StyledTableCell>100 грн</StyledTableCell>
             </TableRow>
             <TableRow>
               <StyledTableCell>15 кг</StyledTableCell>
-              <StyledTableCell>65</StyledTableCell>
-              <StyledTableCell>75</StyledTableCell>
+              <StyledTableCell>65 грн</StyledTableCell>
+              <StyledTableCell>130 грн</StyledTableCell>
             </TableRow>
             <TableRow>
               <StyledTableCell>20 кг</StyledTableCell>
-              <StyledTableCell>75</StyledTableCell>
-              <StyledTableCell>85</StyledTableCell>
+              <StyledTableCell>75 грн</StyledTableCell>
+              <StyledTableCell>150 грн</StyledTableCell>
             </TableRow>
             <TableRow>
               <StyledTableCell>30 кг</StyledTableCell>
-              <StyledTableCell>95</StyledTableCell>
-              <StyledTableCell>100</StyledTableCell>
+              <StyledTableCell>95 грн</StyledTableCell>
+              <StyledTableCell>190 грн</StyledTableCell>
             </TableRow>
           </TableBody>
           <TableHead>
             <StyledTableHeadRow>
-              <StyledTableCell colSpan={4}>Точка видачі*</StyledTableCell>
+              <StyledTableCell colSpan={4}>Вартість перевезення за Розмірами</StyledTableCell>
             </StyledTableHeadRow>
             <TableRow>
-              <StyledTableCell colSpan={2}>Вага (до вказаної включно)</StyledTableCell>
-              <StyledTableCell colSpan={2}>Вартість, грн із ПДВ</StyledTableCell>
+              <StyledTableCell style={{ width: "30%" }}>
+                <Typography variant="body2">
+                  Розмір найбільної сторони
+                  <br />
+                  (до вказаної включно)
+                </Typography>
+              </StyledTableCell>
+              <StyledTableCell style={{ width: "35%" }}>
+                <Typography variant="body2">
+                  У межах України
+                  <br />
+                  (до 4 днів)
+                </Typography>
+              </StyledTableCell>
+              <StyledTableCell style={{ width: "35%" }}>
+                <Typography variant="body2">
+                  За кордон (Европа)
+                  <br />
+                  (до 21 днів)
+                </Typography>
+              </StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow>
-              <StyledTableCell colSpan={2}>2 кг</StyledTableCell>
-              <StyledTableCell colSpan={2}>15,00</StyledTableCell>
+              <StyledTableCell>10 см</StyledTableCell>
+              <StyledTableCell>7,50 грн</StyledTableCell>
+              <StyledTableCell>15,00 грн</StyledTableCell>
             </TableRow>
             <TableRow>
-              <StyledTableCell colSpan={2}>5 кг</StyledTableCell>
-              <StyledTableCell colSpan={2}>20,00</StyledTableCell>
+              <StyledTableCell>15 см</StyledTableCell>
+              <StyledTableCell>9,00 грн</StyledTableCell>
+              <StyledTableCell>18,00 грн</StyledTableCell>
             </TableRow>
             <TableRow>
-              <StyledTableCell colSpan={2}>10 кг</StyledTableCell>
-              <StyledTableCell colSpan={2}>25,00</StyledTableCell>
+              <StyledTableCell>20 см</StyledTableCell>
+              <StyledTableCell>10,00 грн</StyledTableCell>
+              <StyledTableCell>20,00 грн</StyledTableCell>
             </TableRow>
             <TableRow>
-              <StyledTableCell colSpan={2}>15 кг</StyledTableCell>
-              <StyledTableCell colSpan={2}>30,00</StyledTableCell>
+              <StyledTableCell>30 см</StyledTableCell>
+              <StyledTableCell>15,00 грн</StyledTableCell>
+              <StyledTableCell>30,00 грн</StyledTableCell>
             </TableRow>
             <TableRow>
-              <StyledTableCell colSpan={2}>20 кг</StyledTableCell>
-              <StyledTableCell colSpan={2}>35,00</StyledTableCell>
+              <StyledTableCell>50 см</StyledTableCell>
+              <StyledTableCell>20,00 грн</StyledTableCell>
+              <StyledTableCell>40,00 грн</StyledTableCell>
             </TableRow>
             <TableRow>
-              <StyledTableCell colSpan={2}>30 кг</StyledTableCell>
-              <StyledTableCell colSpan={2}>40,00</StyledTableCell>
+              <StyledTableCell>100 см</StyledTableCell>
+              <StyledTableCell>30,00 грн</StyledTableCell>
+              <StyledTableCell>60,00 грн</StyledTableCell>
             </TableRow>
             <TableRow>
               <StyledTableCell colSpan={4}>
@@ -152,6 +169,10 @@ const TaryfyPage = () => {
             <TableRow>
               <StyledTableCell colSpan={2}>За оцінку відправлення</StyledTableCell>
               <StyledTableCell colSpan={2}>1% від повної суми оголошеної цінності, але не менше 1 грн</StyledTableCell>
+            </TableRow>
+            <TableRow>
+              <StyledTableCell colSpan={2}>Маршрут</StyledTableCell>
+              <StyledTableCell colSpan={2}>За кожні 50км до суми добавляється 1 грн</StyledTableCell>
             </TableRow>
           </TableBody>
         </Table>

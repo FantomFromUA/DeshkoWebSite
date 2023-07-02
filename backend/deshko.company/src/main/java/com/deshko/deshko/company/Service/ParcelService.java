@@ -1,5 +1,6 @@
 package com.deshko.deshko.company.Service;
 
+import com.deshko.deshko.company.Calculator.ParcelPriceCalculator;
 import com.deshko.deshko.company.Entity.Parcel;
 import com.deshko.deshko.company.Repositories.ParcelRepository;
 import jakarta.annotation.PostConstruct;
@@ -13,10 +14,12 @@ import java.util.Optional;
 public class ParcelService {
 
     private ParcelRepository parcelRepository;
+    private ParcelPriceCalculator parcelPriceCalculator;
 
     @Autowired
-    public ParcelService(ParcelRepository parcelRepository) {
+    public ParcelService(ParcelRepository parcelRepository, ParcelPriceCalculator parcelPriceCalculator) {
         this.parcelRepository = parcelRepository;
+        this.parcelPriceCalculator = parcelPriceCalculator;
     }
 
     public Parcel getParcelById(String id) {
@@ -26,7 +29,7 @@ public class ParcelService {
     }
 
     public List<Parcel> getParcelByCustomerId(String id) {
-        List<Parcel> parcels = parcelRepository.findByCustomerId(id);
+        List<Parcel> parcels = parcelRepository.findParcelsByCustomerOrDispatcherId(id);
         return parcels;
     }
 
@@ -41,4 +44,9 @@ public class ParcelService {
 
         return parcel;
     }
+
+    public Double calculatePrice(Double distance, String type, Double weight, Double side, Double itemPrice, Boolean abroad){
+        return parcelPriceCalculator.calculateParcelPrice(distance, type, weight, side, itemPrice, abroad);
+    }
+
 }
