@@ -45,8 +45,8 @@ public class ParcelService {
         return parcel;
     }
 
-    public Double calculatePrice(Double distance, String type, Double weight, Double side, Double itemPrice){
-        return parcelPriceCalculator.calculateParcelPrice(distance, type, weight, side, itemPrice);
+    public Double calculatePrice(Double distance, String type, Double weight, Double side, Double itemPrice, Boolean abroad){
+        return parcelPriceCalculator.calculateParcelPrice(distance, type, weight, side, itemPrice, abroad);
     }
 
 }

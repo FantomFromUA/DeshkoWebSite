@@ -11,9 +11,16 @@ import java.util.Map;
 public class ParcelPriceCalculator {
     Map<Double, Integer[]> weightPrices;
     Map<String, Double> typeIndex;
+    Map<Double, Double[]> sidePrices;
 
     @PostConstruct
     private void getPrices(){
+        setWeightPrices();
+        setTypeIndexPrices();
+        setSidePrices();
+    }
+
+    private void setWeightPrices(){
         weightPrices = new LinkedHashMap<>();
         try(FileReader fileReader = new FileReader("weight-prices.txt");
             BufferedReader reader = new BufferedReader(fileReader)){
@@ -25,7 +32,9 @@ public class ParcelPriceCalculator {
         }  catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    private void setTypeIndexPrices(){
         typeIndex = new LinkedHashMap<>();
         try(FileReader fileReader = new FileReader("type-prices-idex.txt");
             BufferedReader reader = new BufferedReader(fileReader)){
@@ -38,11 +47,33 @@ public class ParcelPriceCalculator {
         }
     }
 
-    public Double calculateParcelPrice(Double distance, String type, Double weight, Double side, Double itemPrice){
-        Double res = distance / 10;
+    private void setSidePrices(){
+        sidePrices = new LinkedHashMap<>();
+        try(FileReader fileReader = new FileReader("side-prices.txt");
+            BufferedReader reader = new BufferedReader(fileReader)){
+            while (reader.ready()){
+                String[] values = reader.readLine().split(" ");
+                Double[] pr = {Double.parseDouble(values[1]), Double.parseDouble(values[2])} ;
+                sidePrices.put(Double.parseDouble(values[0]), pr);
+            }
+        }  catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Double calculateParcelPrice(Double distance, String type, Double weight, Double side, Double itemPrice, Boolean abroad){
+        int abr = abroad? 1: 0;
+        Double res = distance / 50;
         for(Double key : weightPrices.keySet()){
             if(weight <= key){
-                res += weightPrices.get(key)[0];
+                res += weightPrices.get(key)[abr];
+                break;
+            }
+        }
+
+        for(Double key : sidePrices.keySet()){
+            if(side <= key){
+                res += sidePrices.get(key)[abr];
                 break;
             }
         }

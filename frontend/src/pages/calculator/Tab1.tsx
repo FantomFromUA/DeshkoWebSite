@@ -2,16 +2,21 @@ import {
   Box,
   Button,
   Divider,
+  FormControl,
   FormControlLabel,
   InputAdornment,
+  InputLabel,
+  MenuItem,
   Radio,
   RadioGroup,
+  Select,
   TextField,
   Typography,
 } from "@mui/material";
 import * as React from "react";
 import { getDistance, getLatAndLong } from "../../http/geoPoint";
 import { calculateParcelPrice } from "../../http/parcelHttp";
+import { UADepartments } from "../../utils/departments";
 
 const Tab1: React.FC = () => {
 
@@ -24,18 +29,24 @@ const Tab1: React.FC = () => {
 
   const [price, setPrice] = React.useState();
 
+  const [age, setAge] = React.useState("");
+
   const calculate = () => {
     if(!validate()){
       return;
     }
     
-    getLatAndLong(from).then(resFirst => {
-      getLatAndLong(destination).then(resSecond => {
+    getLatAndLong(from + ", Україна").then(resFirst => {
+      getLatAndLong(destination + ", Україна").then(resSecond => {
         getDistance(resFirst[0], resFirst[1], resSecond[0], resSecond[1]).then(distanse => {
-          calculateParcelPrice(distanse, parcelType, weight, side, itemPrice).then(price => {
+          calculateParcelPrice(distanse, parcelType, weight, side, itemPrice, false).then(price => {
             setPrice(price);
           });
+          console.log(distanse);
+          
         });
+        console.log(resFirst);
+        
       })
     });
   }
@@ -68,6 +79,8 @@ const Tab1: React.FC = () => {
 
     return true;
   }
+
+
   return (
     <Box
       component="form"
@@ -89,7 +102,37 @@ const Tab1: React.FC = () => {
           width: "100%",
         }}
       >
-        <TextField
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Звідки</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={from}
+            label="From"
+            sx={{ width: "70%" }}
+            onChange={e => setFrom(e.target.value)}
+          >
+            {UADepartments.map((dep, index) => (
+              <MenuItem value={dep} key={index}>{dep}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Куди</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={destination}
+            label="Destination"
+            sx={{ width: "70%" }}
+            onChange={e => setDestination(e.target.value)}
+          >
+            {UADepartments.map((dep, index) => (
+              <MenuItem value={dep} key={index}>{dep}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        {/* <TextField
           required
           id="place-from"
           label="Звідки"
@@ -106,7 +149,7 @@ const Tab1: React.FC = () => {
           margin="normal"
           value={destination}
           onChange={e => setDestination(e.target.value)}
-        />
+        /> */}
       </Box>
       <Divider sx={{ background: "black", my: 4 }} />
 

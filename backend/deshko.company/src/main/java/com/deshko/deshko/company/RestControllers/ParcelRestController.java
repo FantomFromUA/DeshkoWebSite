@@ -58,9 +58,10 @@ public class ParcelRestController {
                                                @RequestParam(name = "type") String type,
                                                @RequestParam(name = "weight") Double weight,
                                                @RequestParam(name = "side") Double side,
-                                               @RequestParam(name = "itemPrice") Double itemPrice
+                                               @RequestParam(name = "itemPrice") Double itemPrice,
+                                               @RequestParam(name = "abroad") Boolean abroad
     ){
-        Double price = parcelService.calculatePrice(distance, type, weight, side, itemPrice);
+        Double price = parcelService.calculatePrice(distance, type, weight, side, itemPrice, abroad);
 
         return ResponseEntity.status(HttpStatus.OK).body(price);
     }

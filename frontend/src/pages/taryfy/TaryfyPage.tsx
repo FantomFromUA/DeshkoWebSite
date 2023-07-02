@@ -170,6 +170,10 @@ const TaryfyPage = () => {
               <StyledTableCell colSpan={2}>За оцінку відправлення</StyledTableCell>
               <StyledTableCell colSpan={2}>1% від повної суми оголошеної цінності, але не менше 1 грн</StyledTableCell>
             </TableRow>
+            <TableRow>
+              <StyledTableCell colSpan={2}>Маршрут</StyledTableCell>
+              <StyledTableCell colSpan={2}>За кожні 50км до суми добавляється 1 грн</StyledTableCell>
+            </TableRow>
           </TableBody>
         </Table>
       </TableContainer>

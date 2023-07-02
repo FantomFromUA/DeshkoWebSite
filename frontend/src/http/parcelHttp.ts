@@ -29,12 +29,12 @@ export const getUserParcels =async (id: string | undefined) => {
     return responseJSON;
 }
 
-export const calculateParcelPrice = async (distance: string, type: string, weight: string, side: string, itemPrice: string) => {
-    const url = `http://localhost:9090/api/parcel/calculate/price?distance=${distance}&type=${type}&weight=${weight}&side=${side}&itemPrice=${itemPrice}`;
+export const calculateParcelPrice = async (distance: string, type: string, weight: string, side: string, itemPrice: string, abroad: boolean) => {
+    const url = `http://localhost:9090/api/parcel/calculate/price?distance=${distance}&type=${type}&weight=${weight}&side=${side}&itemPrice=${itemPrice}&abroad=${abroad}`;
 
     const response = await fetch(url);
     if(!response.ok){
-        throw new Error("Parcel wasn`t found!");
+        throw new Error("Something went wrong!");
     }
 
     const responseJSON = await response.json();
