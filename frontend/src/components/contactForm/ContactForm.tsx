@@ -12,19 +12,31 @@ const ContactForm = () => {
   const [email, setEmail] = React.useState("");
   const [description, setDescription] = React.useState("");
 
+  const [nameError, setNameError] = React.useState("");
+  const [phoneError, setPhoneError] = React.useState("");
+  const [emailError, setEmailError] = React.useState("");
+  const [descriptionError, setDescriptionError] = React.useState("");
+
   const submitEmail = () => {
+    let flag = false;
+
     if(name === "") {
-      alert("Заповніть поле з Іменем");
-      return;
+      setNameError("Заповніть поле з іменем");
+      flag = true;
     }
     if(!validator.isMobilePhone(phone)){
-      alert("Введіть коректний норме телефону");
-      return;
+      setPhoneError("Введіть коректний номер телефону");
+      flag = true;
     } 
     if(!validator.isEmail(email)){
-      alert("Введіть коректний емейл");
-      return;
+      setEmailError("Введіть коректну пошту");
+      flag = true;
     } 
+    if (description === "") {
+      setDescriptionError("Залиште коментар")
+      flag = true;
+    }
+    if (flag) return;
 
     const contactEmail : EmailModel = {
       name,
@@ -67,35 +79,43 @@ const ContactForm = () => {
           required
           id="name"
           value={name}
-          onChange={e => setName(e.target.value)}
+          onChange={e => {setName(e.target.value); setNameError("")}}
           label="Імʼя та прізвище"
           variant="standard"
+          error={Boolean(nameError)}
+            helperText={nameError}
         />
         <TextField
           required
           id="phone-number"
           value={phone}
-          onChange={e => setPhoneNumber(e.target.value)}
+          onChange={e => {setPhoneNumber(e.target.value); setPhoneError("")}}
           label="Номер телефону"
           variant="standard"
+          error={Boolean(phoneError)}
+          helperText={phoneError}
         />
         <TextField 
           required 
           id="email" 
           label="E-mail" 
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={e => {setEmail(e.target.value); setEmailError("")}}
           variant="standard" 
+          error={Boolean(emailError)}
+          helperText={emailError}
         />
         <TextField
           required
           id="comment"
           label="Коментар"
           value={description}
-          onChange={e => setDescription(e.target.value)}
+          onChange={e => {setDescription(e.target.value); setDescriptionError("")}}
           variant="standard"
           multiline
           rows={4}
+          error={Boolean(descriptionError)}
+          helperText={descriptionError}
         />
         <Button
           color="error"

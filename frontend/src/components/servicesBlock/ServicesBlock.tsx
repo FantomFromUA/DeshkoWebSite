@@ -1,6 +1,9 @@
 import { Button, Container, Grid, Typography } from "@mui/material";
 import * as React from "react";
 import ServiceCard from "../servicesCard/ServiceCard";
+import { FaPlaneDeparture } from "react-icons/fa";
+import { HiOutlineDocumentText, HiOutlineTruck } from "react-icons/hi";
+import { TfiMapAlt } from "react-icons/tfi";
 
 const ServicesBlock = () => {
   return (
@@ -29,7 +32,7 @@ const ServicesBlock = () => {
             color="error"
             variant="contained"
             size="large"
-            href="/services"
+            href="/taryfy"
             sx={{ width: "75%", marginTop: 5 }}
             className="button"
           >
@@ -39,16 +42,16 @@ const ServicesBlock = () => {
         <Grid item sm={12} md={8} lg={8}>
           <Grid container spacing={2} justifyContent="space-around">
             <Grid item>
-              <ServiceCard title="Доставка по Україні" icon='"../../images/plane-icon.png"' />
+              <ServiceCard title="Доставка по Україні" icon={<TfiMapAlt/>} />
             </Grid>
             <Grid item>
-              <ServiceCard title="Доставка документів" icon='"../../images/plane-icon.png"' />
+              <ServiceCard title="Доставка документів" icon={<HiOutlineDocumentText/>}/>
             </Grid>
             <Grid item>
-              <ServiceCard title="Доставка за межі України" icon='"../../images/plane-icon.png"' />
+              <ServiceCard title="Доставка за межі України" icon={<FaPlaneDeparture/>} />
             </Grid>
             <Grid item>
-              <ServiceCard title="Доставка в Україну" icon='"../../images/plane-icon.png"'/>
+              <ServiceCard title="Доставка в Україну" icon={<HiOutlineTruck/>}/>
             </Grid>
           </Grid>
         </Grid>

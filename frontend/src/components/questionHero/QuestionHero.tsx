@@ -15,7 +15,6 @@ const QuestionHero = () => {
         my: 9,
       }}
     >
-      <Link to="/contact">
         <Button
           sx={{
             border: "4px solid black",
@@ -24,13 +23,13 @@ const QuestionHero = () => {
             py: 2,
             px: 5,
           }}
+          href="/contact"
         >
-          <Typography variant="h4" component="span" sx={{ color: "black" }}>
+          <Typography variant="h4" component="span" sx={{ color: "black", textAlign: "center" }}>
             Залишились запитання? <br />
             Потрібна допомога?
           </Typography>
         </Button>
-      </Link>
       <Typography variant="subtitle1" sx={{ my: 3 }}>
         Завжди готові допомогти. Залишаємося на звʼязку!
       </Typography>

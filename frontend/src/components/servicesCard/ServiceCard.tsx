@@ -1,4 +1,5 @@
 import { 
+  Box,
   Card,
   CardContent,
   Icon,
@@ -9,7 +10,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 interface ServiceCardProps {
   title: string;
-  icon: string;
+  icon: any;
 }
 
 const animateCard = keyframes`
@@ -50,6 +51,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, icon }) => {
     };
   }, []);
 
+  console.log(icon)
   return (
     <Card
       ref={cardRef}
@@ -58,18 +60,28 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, icon }) => {
         width: "20vw",
         minHeight: "150px",
         transition: "background-color 0.3s",
+        backgroundColor: "#9ba7b3",
         "&:hover": {
-          backgroundColor: "#f5f5f5",
-          cursor: "pointer",
+          backgroundColor: "#042c4b"
         },
       }}
     >
       <CardContent>
+      <Typography
+          sx={{            
+            color: "white",
+            textAlign: "end",
+            pr: 2,
+            fontSize: { xs: "h4.fontSize", sm: "h6.fontSize" },          
+          }}
+        >{icon}
+        </Typography>
         <Typography
-          variant="h5"
           sx={{
+            fontSize: { xs: "h6.fontSize", sm: "h5.fontSize" },        
             fontWeight: "bold",
             textAlign: "center",
+            color: "white"
           }}
         >
           {title}

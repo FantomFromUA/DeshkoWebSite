@@ -54,6 +54,7 @@ const Header = () => {
             <Nav.Link href="/tracking">Трекінг</Nav.Link>
             <Nav.Link href='/calculator'>Калькулятор</Nav.Link>
             <Nav.Link href="/taryfy">Тарифи</Nav.Link>
+            <Nav.Link href="/faq">FAQ</Nav.Link>
             <Nav.Link href="/contact">Контакти</Nav.Link>
           </Nav>
           {isMobile ? 

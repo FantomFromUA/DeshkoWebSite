@@ -77,8 +77,8 @@ const UserCabinetPage: React.FC = () => {
       let row = {
         id: parcel.number,
         dateOfShipment: parcel.dateOfShipment.toString(),
-        dispatcher: parcel.dispatcher.name,
-        customer: parcel.customer.name,
+        dispatcher: parcel.dispatcher?.name,
+        customer: parcel.customer?.name,
         department: `${parcel.department.region}, ${parcel.department.city}, вул. ${parcel.department.street}, ${parcel.department.buildingNumber}`,
         status: parcel.status,
         dateOfReceiving: parcel.dateOfReceiving

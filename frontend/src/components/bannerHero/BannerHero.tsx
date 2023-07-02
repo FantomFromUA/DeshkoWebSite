@@ -3,8 +3,27 @@ import React from "react";
 import "./bannerHero.css";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import { TbSquareRoundedNumber1, TbSquareRoundedNumber2, TbSquareRoundedNumber3 } from "react-icons/tb";
+import { CustomerModel } from "../../types/customerModel";
 
 const BannerHero = () => {
+
+  const [customer, setCustomer] = React.useState<CustomerModel | null>(null);
+
+  React.useEffect(() => {
+    const customerJSON = localStorage.getItem("userInfo");
+    
+    if(customerJSON === null){
+      setCustomer(null);
+      return;
+    }
+    setCustomer(JSON.parse(parcer(localStorage.getItem("userInfo"))));
+  }, [])
+
+  const parcer = (value : string | null) : string => {
+    if(value === null) return "";
+    return value;
+  }
+
   return (
     <div className="bannerContainer">
       <div className="blurred"></div>
@@ -52,9 +71,11 @@ const BannerHero = () => {
 
           <Grid item xs={12} textAlign="center">
             <Typography variant="h4" className="title">
-              Перевірити та створити посилку прямо зараз
+              Перевірити посилку прямо зараз
             </Typography>
 
+            {customer === null
+              ?
             <Button
               color="error"
               variant="contained"
@@ -65,7 +86,20 @@ const BannerHero = () => {
               endIcon={<BsFillArrowRightCircleFill />}
             >
               Створити власний кабінет
-            </Button>
+            </Button> :
+             <Button
+             color="error"
+             variant="contained"
+             size="large"
+             href="/user"
+             className="ctaButton"
+             sx={{mt:3,  minWidth: "450px" }}
+             endIcon={<BsFillArrowRightCircleFill />}
+           >
+             Перейти у власний кабінет
+           </Button>
+}
+
           </Grid>
           
         </Grid>

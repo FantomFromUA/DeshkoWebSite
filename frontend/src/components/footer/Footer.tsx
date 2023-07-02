@@ -11,6 +11,10 @@ import { BiSend } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0)
+}
+
   return (
     <div className="text-white">
       <Typography component="footer" className={"footer"}>
@@ -52,7 +56,7 @@ const Footer = () => {
                      
                   }}
                 >
-                  <Link to="/about" className="link text-decoration-none">
+                  <Link onClick={scrollToTop} to="/about" className="link text-decoration-none">
                     Про нас
                   </Link>
                 </Box>
@@ -64,7 +68,7 @@ const Footer = () => {
                      
                   }}
                 >
-                  <Link to="/tracking" className="link text-decoration-none">
+                  <Link onClick={scrollToTop} to="/tracking" className="link text-decoration-none">
                     Трекінг
                   </Link>
                 </Box>
@@ -75,7 +79,7 @@ const Footer = () => {
                     fontSize: "h6.fontSize",
                   }}
                 >
-                  <Link to="/calculator" className="link text-decoration-none">
+                  <Link onClick={scrollToTop} to="/calculator" className="link text-decoration-none">
                     Калькулятор розрахунку
                   </Link>
                 </Box>
@@ -87,7 +91,7 @@ const Footer = () => {
                      
                   }}
                 >
-                  <Link to="/taryfy" className="link text-decoration-none">
+                  <Link onClick={scrollToTop} to="/taryfy" className="link text-decoration-none">
                     Тарифи
                   </Link>
                 </Box>
@@ -99,7 +103,7 @@ const Footer = () => {
                      
                   }}
                 >
-                  <Link to="/contact" className="link text-decoration-none">
+                  <Link onClick={scrollToTop} to="/contact" className="link text-decoration-none">
                     Контакти
                   </Link>
                 </Box>
