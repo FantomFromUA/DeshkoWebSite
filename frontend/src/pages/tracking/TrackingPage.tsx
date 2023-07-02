@@ -12,22 +12,29 @@ import {
 import * as React from "react";
 import { getParcelById } from "../../http/parcelHttp";
 import { ParcelModel } from "../../types/parcelModel";
+import { useParams, useSearchParams } from "react-router-dom";
 
 const TrackingPage: React.FC = () => {
   const [parcelId, setParcelId] = React.useState("");
   const [error, setError] = React.useState<string | undefined>();
   const [parcel, setParcel] = React.useState<ParcelModel | undefined>();
+  const [parcelIdParam] = useSearchParams();
 
-  const findPurcel = () => {
-    if (parcelId === "") {
+
+  React.useEffect(() => {
+    findPurcel(parcelIdParam.get("parcelId")!);
+  }, [])
+
+  const findPurcel = (id : string = parcelId) => {
+    console.log(id);
+    if (id === "" || id === null) {
       return;
     }
 
-    getParcelById(parcelId)
+    getParcelById(id)
       .then((parcel: ParcelModel) => {
         setParcel(parcel);
         setError(undefined);
-        console.log(parcel);
       })
       .catch((error: Error) => {
         setParcel(undefined);
@@ -48,6 +55,7 @@ const TrackingPage: React.FC = () => {
           <TextField
             placeholder="Введіть номер відправлення"
             value={parcelId}
+            autoFocus
             onChange={(e) => setParcelId(e.target.value)}
             sx={{
               width: "100%",
@@ -76,7 +84,7 @@ const TrackingPage: React.FC = () => {
                 </InputAdornment>
               ),
             }}
-          ></TextField>
+          />
         </Grid>
         <Grid item sm={12} md={6} lg={6} alignContent="center">
           <Card>

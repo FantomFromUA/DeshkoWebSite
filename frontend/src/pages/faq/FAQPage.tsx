@@ -49,7 +49,7 @@ const FAQPage: React.FC = () => {
               <Typography
                 variant="body1"
                 sx={{
-                  fontFamily: '"Helvetica Neue"',
+                   
                   fontWeight: "bold",
                 }}
               >
@@ -77,7 +77,7 @@ const FAQPage: React.FC = () => {
               <Typography
                 variant="body1"
                 sx={{
-                  fontFamily: '"Helvetica Neue"',
+                   
                   fontWeight: "bold",
                 }}
               >
@@ -105,7 +105,7 @@ const FAQPage: React.FC = () => {
               <Typography
                 variant="body1"
                 sx={{
-                  fontFamily: '"Helvetica Neue"',
+                   
                   fontWeight: "bold",
                 }}
               >
@@ -134,7 +134,7 @@ const FAQPage: React.FC = () => {
               <Typography
                 variant="body1"
                 sx={{
-                  fontFamily: '"Helvetica Neue"',
+                   
                   fontWeight: "bold",
                 }}
               >

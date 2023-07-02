@@ -85,7 +85,7 @@ const UserCabinetPage: React.FC = () => {
         my={3}
       >
         <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-          Вихідні накладні
+          Ваші накладні
         </Typography>
         <Button href="/tracking">Відслідкувати посилку</Button>
       </Box>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
-import { BiUser } from "react-icons/bi";
 import {
   FaInstagram, 
   FaTelegram,
@@ -16,7 +15,6 @@ const Header = () => {
 
   React.useEffect(() => {
     const customerJSON = localStorage.getItem("userInfo");
-    console.log(customerJSON);
     
     if(customerJSON === null){
       setCustomer(null);
@@ -58,7 +56,17 @@ const Header = () => {
             <Nav.Link href="/taryfy">Тарифи</Nav.Link>
             <Nav.Link href="/contact">Контакти</Nav.Link>
           </Nav>
-          {!isMobile && (
+          {isMobile ? 
+          (
+            customer === null
+              ?<Nav.Link href="/signin" className="mt-1">Вхід/Реєстрація</Nav.Link>
+              :<NavDropdown  title={"🧍" + customer.login} className="mt-1">
+                  <NavDropdown.Item href="/user">Кабінет</NavDropdown.Item>
+                  <NavDropdown.Item onClick={logout}>Вийти з акаунту</NavDropdown.Item>
+                </NavDropdown >
+          )
+          :
+          (
             <Nav className="ml-auto">
               <Nav.Link href="/" className="m-1">
                 <FaInstagram />
@@ -69,7 +77,7 @@ const Header = () => {
               <Nav.Link href="/" className="m-1">
                 <FaTelegram />
               </Nav.Link>
-              <Nav.Link href="/" className="m-1">
+              <Nav.Link href="tel:+380505055555" className="m-1">
                 <FaPhoneAlt />
               </Nav.Link>
               {customer === null

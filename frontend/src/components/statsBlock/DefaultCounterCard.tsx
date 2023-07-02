@@ -29,7 +29,7 @@ const DefaultCounterCard: React.FC<CounterCardProps> = ({
     <Card sx={{minWidth: 200, border: "none", boxShadow: "none", display: "flex", backgroundColor: "#fbfafa"}}>
       <CardContent sx={{alignContent:"center", justifyContent:"stretch"}}>
         <Typography variant="h5"  sx={{
-              fontFamily: '"Helvetica Neue"',
+               
               fontWeight: "bold",
               color: "#042c4b",
               textAlign:"center"

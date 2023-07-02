@@ -53,7 +53,7 @@ const AboutPage: React.FC = () => {
             <Typography
               variant="h4"
               sx={{
-                fontFamily: '"Helvetica Neue"',
+                 
                 fontWeight: "bold",
                 textAlign: "left",
                 mb: 3,
@@ -64,7 +64,6 @@ const AboutPage: React.FC = () => {
             <Typography
               variant="inherit"
               sx={{
-                fontFamily: '"Helvetica Neue"',
                 textAlign: "left",
               }}
             >
@@ -80,7 +79,7 @@ const AboutPage: React.FC = () => {
             <Typography
               variant="h4"
               sx={{
-                fontFamily: '"Helvetica Neue"',
+                 
                 fontWeight: "bold",
                 textAlign: "right",
                 mb: 3,
@@ -91,7 +90,7 @@ const AboutPage: React.FC = () => {
             <Typography
               variant="inherit"
               sx={{
-                fontFamily: '"Helvetica Neue"',
+                 
                 textAlign: "right",
               }}
             >
@@ -120,7 +119,7 @@ const AboutPage: React.FC = () => {
             <Typography
               variant="h4"
               sx={{
-                fontFamily: '"Helvetica Neue"',
+                 
                 fontWeight: "bold",
                 textAlign: "left",
                 mb: 3,
@@ -131,7 +130,7 @@ const AboutPage: React.FC = () => {
             <Typography
               variant="inherit"
               sx={{
-                fontFamily: '"Helvetica Neue"',
+                 
                 textAlign: "left",
               }}
             >

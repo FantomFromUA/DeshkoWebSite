@@ -65,9 +65,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, icon }) => {
       }}
     >
       <CardContent>
-        <Icon sx={{ color: "primary.main", mb: 1 }}>
-          <img style={{ height: "100%" }} src={icon} alt=""/>
-        </Icon>
         <Typography
           variant="h5"
           sx={{

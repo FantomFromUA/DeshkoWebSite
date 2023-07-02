@@ -1,16 +1,29 @@
-import { Box, Typography, TextField, Grid, Container, Button, IconButton, InputAdornment } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  Grid,
+  Container,
+  Button,
+  IconButton,
+  InputAdornment,
+} from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { MdOutlineVisibilityOff, MdOutlineVisibility } from "react-icons/md";
 import { RegistrationCustomerModel } from "../../types/registrationCustomerModel";
 import validator from "validator";
 import { checkIfValidRegestration, registration } from "../../http/userHttp";
-import * as React from 'react';
-
+import * as React from "react";
 
 const SignUpPage = () => {
+  const [nameError, setNameError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -20,53 +33,60 @@ const SignUpPage = () => {
     const email = parcer(data.get("email")?.toString());
     const login = parcer(data.get("login")?.toString());
     const password = parcer(data.get("password")?.toString());
+    let flag = false;
 
-    if(name === ""){
-      alert("Заповніть поле з іменем");
-      return;
-    }
-    
-    if(!validator.isMobilePhone(phone)){
-      alert("Введіть коректний номер телефону");
-      return;
+    if (name === "") {
+      setNameError("Заповніть поле з іменем");
+      flag = true;
     }
 
-    if(!validator.isEmail(email)){
-      alert("Введіть коректний емейл");
-      return;
+    if (!validator.isMobilePhone(phone) || phone === "") {
+      setPhoneError("Введіть коректний номер телефону");
+      flag = true;
     }
 
-    if(login === ""){
-      alert("Заповніть поле з Логіном");
-      return;
+    if (!validator.isEmail(email) || email === "") {
+      setEmailError("Введіть коректний емейл");
+      flag = true;
     }
 
-    if(!validator.isStrongPassword(password)){
-      alert("Пароль повинен містити: 1 букву в вищому регістрі, 1 букву в нижньому регість, 1 цифру, 1 спеціальний символ, та бути завдовжки мінімум 8 символів");
-      return;
+    if (login === "") {
+      setLoginError("Заповніть поле з Логіном");
+      flag = true;
     }
+
+    if (!validator.isStrongPassword(password) || password === "") {
+      setPasswordError(
+        "Пароль повинен містити: 1 букву в вищому регістрі, 1 букву в нижньому регість, 1 цифру, 1 спеціальний символ, та бути завдовжки мінімум 8 символів"
+      );
+      flag = true;
+    }
+
+    if (flag)  return;
+
     checkIfValidRegestration(phone, email, login)
-    .then(() => {
-      const customer : RegistrationCustomerModel = {
-        name,
-        phone,
-        email,
-        login,
-        password
-      };
-      registration(customer).catch((error: Error) => alert(error.message));
-      alert("Тепер підтвердіть свою пошту");
-      navigate("/signin")
-    })
-    .catch((error : Error) => {
-      alert(error.message);
-    });
+      .then(() => {
+        const customer: RegistrationCustomerModel = {
+          name,
+          phone,
+          email,
+          login,
+          password,
+        };
+        registration(customer).catch((error: Error) => alert(error.message));
+        alert("Тепер підтвердіть свою пошту");
+        navigate("/signin");
+      })
+      .catch((error: Error) => {
+        alert(error.message);
+      });
   };
 
-  const parcer = (value : string | undefined) : string => {
-    if(value === undefined) return "";
+  
+  const parcer = (value: string | undefined): string => {
+    if (value === undefined) return "";
     return value;
-  }
+  };
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -96,7 +116,7 @@ const SignUpPage = () => {
           Реєстрація
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-        <TextField
+          <TextField
             margin="normal"
             required
             fullWidth
@@ -105,7 +125,11 @@ const SignUpPage = () => {
             name="name"
             autoComplete="name"
             autoFocus
+            error={Boolean(nameError)}
+            helperText={nameError}
+            onChange={() => setNameError("")} 
           />
+
           <TextField
             margin="normal"
             required
@@ -114,8 +138,11 @@ const SignUpPage = () => {
             label="Номер телефону"
             name="phone"
             autoComplete="phone"
-            autoFocus
+            error={Boolean(phoneError)}
+            helperText={phoneError}
+            onChange={() => setPhoneError("")}
           />
+
           <TextField
             margin="normal"
             required
@@ -124,8 +151,11 @@ const SignUpPage = () => {
             label="Електронна пошта"
             name="email"
             autoComplete="email"
-            autoFocus
+            error={Boolean(emailError)}
+            helperText={emailError}
+            onChange={() => setEmailError("")}
           />
+
           <TextField
             margin="normal"
             required
@@ -134,9 +164,12 @@ const SignUpPage = () => {
             label="Логін"
             name="login"
             autoComplete="login"
-            autoFocus
+            error={Boolean(loginError)}
+            helperText={loginError}
+            onChange={() => setLoginError("")}
           />
-           <TextField
+
+          <TextField
             margin="normal"
             required
             fullWidth
@@ -163,7 +196,11 @@ const SignUpPage = () => {
                 </InputAdornment>
               ),
             }}
+            error={Boolean(passwordError)}
+            helperText={passwordError}
+            onChange={() => setPasswordError("")}
           />
+
           <Button
             type="submit"
             fullWidth
@@ -173,18 +210,15 @@ const SignUpPage = () => {
             Sign Up
           </Button>
           <Grid container>
-            <Grid item xs>
-            </Grid>
+            <Grid item xs></Grid>
             <Grid item>
-              <Link to="/signin">
-                {"Вже маєте аккаунт? Вхід"}
-              </Link>
+              <Link to="/signin">{"Вже маєте аккаунт? Вхід"}</Link>
             </Grid>
           </Grid>
         </Box>
       </Box>
     </Container>
   );
-}
+};
 
 export default SignUpPage;

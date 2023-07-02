@@ -21,7 +21,7 @@ const TrackingHero = () => {
   const [parcelId, setParcelId] = useState("");
 
   const findPurcel = () => {
-    navigate(`/parcel/${parcelId}`);
+    navigate(`/tracking?parcelId=${parcelId}`);
   }
 
   const [customer, setCustomer] = React.useState<CustomerModel | null>(null);

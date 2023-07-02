@@ -37,7 +37,7 @@ const RegistrationBlock = () => {
           <Typography
             variant="h3"
             sx={{
-              fontFamily: '"Helvetica Neue"',
+               
               fontWeight: "bold",
               color: "white",
               mb: 2,
@@ -64,7 +64,7 @@ const RegistrationBlock = () => {
             variant="contained"
             size="large"
             component="a"
-            href="/"
+            href="/signup"
             sx={{ minWidth: 350, marginTop: 3 }}
           >
             Реєстрація

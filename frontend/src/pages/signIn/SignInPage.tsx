@@ -21,20 +21,27 @@ const SignInPage = () => {
 
   const navigate = useNavigate();
 
+  const [loginError, setLoginError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
   const handleSubmit = (event: any) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const login = parcer(data.get("email")?.toString());
     const password = parcer(data.get("password")?.toString());
+    let flag = false;
 
-    if(login === ""){
-      alert("Введіть логін або емейл!");
-      return;
+    if(login === "") {
+      setLoginError("Введіть логін або емейл!");
+      flag = true;
     }
 
-    if(password === ""){
-      alert("Введіьб пароль!")
+    if(password === "") {
+      setPasswordError("Введіть пароль!")
+      flag = true;
     }
+
+    if (flag)  return;
 
     signin(login, password).then((customer : CustomerModel) => {
       localStorage.setItem('userInfo', JSON.stringify(customer));
@@ -87,6 +94,9 @@ const SignInPage = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            error={Boolean(loginError)}
+            helperText={loginError}
+            onChange={() => setLoginError("")}
           />
           <TextField
             margin="normal"
@@ -115,6 +125,9 @@ const SignInPage = () => {
                 </InputAdornment>
               ),
             }}
+            error={Boolean(passwordError)}
+            helperText={passwordError}
+            onChange={() => setPasswordError("")}
           />
           <Button
             type="submit"

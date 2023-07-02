@@ -59,7 +59,7 @@ const BannerHero = () => {
               color="error"
               variant="contained"
               size="large"
-              href="/"
+              href="/signup"
               className="ctaButton"
               sx={{mt:3,  minWidth: "450px" }}
               endIcon={<BsFillArrowRightCircleFill />}

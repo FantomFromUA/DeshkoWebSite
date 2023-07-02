@@ -18,10 +18,9 @@ const Footer = () => {
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={6} lg={6} alignContent="center">
               <Typography
-                variant="body1"
                 sx={{
                   fontSize: { xs: "h6.fontSize", sm: "h5.fontSize" },
-                  fontFamily: '"Helvetica Neue"',
+                   
                   fontWeight: "bold",
                 }}
               >
@@ -50,7 +49,7 @@ const Footer = () => {
                   sx={{
                     py: 0.5,
                     fontSize: "h6.fontSize",
-                    fontFamily: '"Helvetica Neue"',
+                     
                   }}
                 >
                   <Link to="/about" className="link text-decoration-none">
@@ -62,11 +61,11 @@ const Footer = () => {
                   sx={{
                     py: 0.5,
                     fontSize: "h6.fontSize",
-                    fontFamily: '"Helvetica Neue"',
+                     
                   }}
                 >
-                  <Link to="/services" className="link text-decoration-none">
-                    Послуги
+                  <Link to="/tracking" className="link text-decoration-none">
+                    Трекінг
                   </Link>
                 </Box>
                 <Box
@@ -74,7 +73,6 @@ const Footer = () => {
                   sx={{
                     py: 0.5,
                     fontSize: "h6.fontSize",
-                    fontFamily: '"Helvetica Neue"',
                   }}
                 >
                   <Link to="/calculator" className="link text-decoration-none">
@@ -86,7 +84,7 @@ const Footer = () => {
                   sx={{
                     py: 0.5,
                     fontSize: "h6.fontSize",
-                    fontFamily: '"Helvetica Neue"',
+                     
                   }}
                 >
                   <Link to="/taryfy" className="link text-decoration-none">
@@ -98,7 +96,7 @@ const Footer = () => {
                   sx={{
                     py: 0.5,
                     fontSize: "h6.fontSize",
-                    fontFamily: '"Helvetica Neue"',
+                     
                   }}
                 >
                   <Link to="/contact" className="link text-decoration-none">

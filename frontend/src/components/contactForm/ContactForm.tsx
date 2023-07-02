@@ -25,10 +25,6 @@ const ContactForm = () => {
       alert("Введіть коректний емейл");
       return;
     } 
-    if(description === ""){
-      alert("Заповніть поле з Коментарем");
-      return;
-    } 
 
     const contactEmail : EmailModel = {
       name,
