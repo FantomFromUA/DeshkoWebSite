@@ -3,7 +3,9 @@ package com.deshko.deshko.company.RestControllers;
 import com.deshko.deshko.company.DTO.ContactEmailDTO;
 import com.deshko.deshko.company.Service.CustomerService;
 import com.deshko.deshko.company.Service.EmailService;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,9 +28,9 @@ public class EmailRestController {
     }
 
     @GetMapping("/verification")
-    public String verifyCustomer(@RequestParam("id") String id){
+    public ResponseEntity verifyCustomer(@RequestParam("id") String id){
         customerService.verifyCustomer(id);
 
-        return "Ви можете закрити цю сторінку";
+        return ResponseEntity.ok("Ви можете закрити цю сторінку");
     }
 }

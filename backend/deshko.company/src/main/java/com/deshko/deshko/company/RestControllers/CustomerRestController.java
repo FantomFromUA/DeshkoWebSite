@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/api/customer")
 @CrossOrigin(origins = "http://localhost:3000/")
@@ -61,7 +63,7 @@ public class CustomerRestController {
         Customer customer = customerService.singIn(login, password);
 
         if(customer == null){
-            return ResponseEntity.status(HttpStatus.ACCEPTED).body('1');
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Акаунт не знайдето, або ви його не підтвердили на пошті");
         }
 
         return  ResponseEntity.status(HttpStatus.OK).body(CustomerMapper.entityToDTO(customer));
@@ -71,7 +73,7 @@ public class CustomerRestController {
     public ResponseEntity checkIfCustomerExist(@RequestHeader String email,
                                                @RequestHeader String phone,
                                                @RequestHeader String login){
-        if(customerService.findByEmail(email).isPresent()){
+        if(customerService.findByEmail(email).isPresent() ){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body('1');
         }
 

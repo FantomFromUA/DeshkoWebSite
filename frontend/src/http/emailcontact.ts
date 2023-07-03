@@ -17,3 +17,9 @@ export const sendContactEmail =async (email : EmailModel) => {
         
     }
 }
+
+export const verifyAccount =async (id : any) => {
+    const url = `http://localhost:9090/email/verification?id=${id}`;
+
+    const response = fetch(url);
+}

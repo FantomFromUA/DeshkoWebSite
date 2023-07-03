@@ -31,7 +31,7 @@ public class CustomerService {
     public Customer postCustomer(Customer customer) {
         Customer newCustomer = customerRepository.save(customer);
 
-        return customer;
+        return newCustomer;
     }
 
     public Customer singIn(String login, String password) {
@@ -42,7 +42,11 @@ public class CustomerService {
             customer = customerRepository.findByEmailAndPassword(login, password);
         }
 
-        return customer.orElse(null);
+        if(customer.isEmpty() || !customer.get().isEnabled()){
+            return null;
+        }
+
+        return customer.get();
 
     }
 

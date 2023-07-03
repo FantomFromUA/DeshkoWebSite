@@ -11,6 +11,8 @@ import SignIn from "./signIn/SignInPage";
 import SignUp from "./signUp/SignUpPage";
 import UserCabinetPage from "./userCabinet/UserCabinetPage";
 import CalculatorPage from "./calculator/CalculatorPage";
+import { Verify } from "crypto";
+import VerifyPage from "./verifyPage/VerifyPage";
 
 const pagesData: routerType[] = [
     {
@@ -61,6 +63,11 @@ const pagesData: routerType[] = [
         path: "/calculator",
         element: <CalculatorPage/>,
         title: "calculator"
+    },
+    {
+        path: '/verify',
+        element: <VerifyPage />,
+        title: "verify"
     },
     {
       path: "*", 

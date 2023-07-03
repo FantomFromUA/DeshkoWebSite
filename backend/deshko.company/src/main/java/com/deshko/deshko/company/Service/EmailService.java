@@ -52,7 +52,7 @@ public class EmailService {
             mimeMessageHelper.setFrom("tipplaygame@gmail.com");
             mimeMessageHelper.setTo(email);
             mimeMessageHelper.setSubject("Підтвердіть свою пошту");
-            mimeMessageHelper.setText("Перейдіть за посиланням\nhttp://localhost:9090/email/verification?id=" + id);
+            mimeMessageHelper.setText("Перейдіть за посиланням\nhttp://localhost:3000/verify?id=" + id);
 
             javaMailSender.send(mimeMessage);
 

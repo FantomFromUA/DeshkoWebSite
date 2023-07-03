@@ -52,11 +52,15 @@ export const signin = async (login: string, password: string) : Promise<Customer
 
     const response = await fetch(url, requestOptions);
 
+    console.log();
+    
+
     if(!response.ok){
-        throw new Error("1231231231231");
+        throw new Error("Акаунт не знайдето, або ви його не підтвердили на пошті");
     }
 
     const responseJSON = await response.json();
+    
     
     return responseJSON;
 }
