@@ -1,8 +1,8 @@
-import { Button, Container, Grid, Typography } from "@mui/material";
+import { Button, Container, Grid, Typography, useMediaQuery } from "@mui/material";
 import * as React from "react";
 
 const RegistrationBlock = () => {
-
+  const isMobile = useMediaQuery("(max-width: 600px)");
   return (
     <Container
       component="section"
@@ -35,9 +35,8 @@ const RegistrationBlock = () => {
 
         <Grid item xs={6} md={6}>
           <Typography
-            variant="h3"
+            variant={isMobile ? "h5" : "h3"}
             sx={{
-               
               fontWeight: "bold",
               color: "white",
               mb: 2,
@@ -47,7 +46,7 @@ const RegistrationBlock = () => {
           </Typography>
 
           <Typography
-            variant="h6"
+            variant={isMobile ? "subtitle2" : "h6"}
             sx={{
               fontFamily: "unset",
               color: "grey",
@@ -65,7 +64,8 @@ const RegistrationBlock = () => {
             size="large"
             component="a"
             href="/signup"
-            sx={{ minWidth: 350, marginTop: 3 }}
+            className="button"
+            sx={{ minWidth: !isMobile ? 350 : "100%", marginTop: 3 }}
           >
             Реєстрація
           </Button>

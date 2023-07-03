@@ -1,8 +1,6 @@
 import { 
-  Box,
   Card,
   CardContent,
-  Icon,
   Typography,
   keyframes,
 } from "@mui/material";
@@ -64,6 +62,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, icon }) => {
         "&:hover": {
           backgroundColor: "#042c4b"
         },
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <CardContent>
@@ -72,6 +74,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, icon }) => {
             color: "white",
             textAlign: "end",
             pr: 2,
+            mt: -2,
             fontSize: { xs: "h4.fontSize", sm: "h6.fontSize" },          
           }}
         >{icon}

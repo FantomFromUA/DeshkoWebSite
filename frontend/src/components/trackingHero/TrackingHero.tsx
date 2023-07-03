@@ -6,6 +6,7 @@ import {
   InputAdornment,
   TextField,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import { AiOutlineCalculator, AiOutlineQuestionCircle } from "react-icons/ai";
 import { BsCalculator } from "react-icons/bs";
@@ -15,32 +16,32 @@ import { useNavigate } from "react-router-dom";
 import { CustomerModel } from "../../types/customerModel";
 
 const TrackingHero = () => {
-
   const navigate = useNavigate();
+  const isMobile = useMediaQuery("(max-width: 800px)");
 
   const [parcelId, setParcelId] = useState("");
 
-  const findPurcel = () => {
+  const findParcel = () => {
     navigate(`/tracking?parcelId=${parcelId}`);
-  }
+  };
 
   const [customer, setCustomer] = React.useState<CustomerModel | null>(null);
 
   React.useEffect(() => {
     const customerJSON = localStorage.getItem("userInfo");
     console.log(customerJSON);
-    
-    if(customerJSON === null){
+
+    if (customerJSON === null) {
       setCustomer(null);
       return;
     }
     setCustomer(JSON.parse(parcer(localStorage.getItem("userInfo"))));
-  }, [])
+  }, []);
 
-  const parcer = (value : string | null) : string => {
-    if(value === null) return "";
+  const parcer = (value: string | null): string => {
+    if (value === null) return "";
     return value;
-  }
+  };
 
   return (
     <Container
@@ -58,18 +59,19 @@ const TrackingHero = () => {
       <Grid
         container
         spacing={2}
-        direction="row"
-        justifyContent="flex-start"
+        direction={"row"}
+        justifyContent={isMobile ? "center" : "flex-start"}
         alignItems="center"
-        sx={{ ml: 10 }}
+        sx={{ ml: isMobile ? 0 : 10 }}
       >
-        <Grid item xs={6} md={6}>
+        <Grid item xs={12} md={6}>
           <Typography
             variant="h3"
             sx={{
               fontWeight: "bold",
               color: "white",
               mb: 2,
+              textAlign: isMobile ? "center" : "left",
             }}
           >
             Доставка на території України та світу
@@ -81,17 +83,19 @@ const TrackingHero = () => {
               color: "white",
               mb: 2,
               mr: 5,
+              textAlign: isMobile ? "center" : "left",
             }}
           >
             Ваша точка опори - поруч. Надсилаємо туди, куди іншим не дістатись.
           </Typography>
+          {!isMobile &&
           <Box component="form" noValidate autoComplete="off">
             <TextField
               placeholder="Введіть номер відправлення"
               value={parcelId}
-              onChange={e => setParcelId(e.target.value)}
+              onChange={(e) => setParcelId(e.target.value)}
               sx={{
-                width: "75%",
+                width: isMobile ? "100%" : "75%",
                 mt: 3,
                 mb: 3,
                 py: 1,
@@ -103,7 +107,7 @@ const TrackingHero = () => {
                 endAdornment: (
                   <InputAdornment position="end">
                     <Button
-                      onClick={() => findPurcel()}
+                      onClick={() => findParcel()}
                       color="primary"
                       sx={{
                         "&:hover": {
@@ -111,7 +115,13 @@ const TrackingHero = () => {
                         },
                       }}
                     >
-                      <Typography sx={{ fontWeight: "bold", color: "black" }}>
+                      <Typography
+                        sx={{
+                          fontWeight: "bold",
+                          color: "black",
+                          textAlign: "center",
+                        }}
+                      >
                         Відстежити
                       </Typography>
                     </Button>
@@ -120,21 +130,23 @@ const TrackingHero = () => {
               }}
             />
           </Box>
+          }
         </Grid>
-        <Grid item xs={6} md={6}>
-        <Box
-              component="img"
-              src={require("../../images/tracking-hero.png")}
-              sx={{
-                height: "350px",
-              }}
-            />
-        </Grid>
+        {!isMobile &&
+        <Grid item xs={12} md={6}>
+          <Box
+            component="img"
+            src={require("../../images/tracking-hero.png")}
+            sx={{
+              height: "350px"
+            }}
+          />
+        </Grid> }
         <Grid item xs={12} md={12}>
           <Grid container spacing={2} justifyContent="space-around">
             <Grid item>
               <Button
-                startIcon={<BsCalculator />}
+                startIcon={<AiOutlineCalculator />}
                 variant="contained"
                 size="medium"
                 href="/taryfy"
@@ -151,7 +163,7 @@ const TrackingHero = () => {
             </Grid>
             <Grid item>
               <Button
-                startIcon={<AiOutlineCalculator />}
+                startIcon={<BsCalculator />}
                 variant="contained"
                 size="medium"
                 href="/calculator"
@@ -167,38 +179,39 @@ const TrackingHero = () => {
               </Button>
             </Grid>
             <Grid item>
-              { customer === null
-              ? <Button
-                startIcon={<BiLogIn />}
-                variant="contained"
-                size="medium"
-                href="/signin"
-                sx={{
-                  minWidth: "17vw",
-                  py: 3,
-                  "&:hover": {
-                    color: "white",
-                  },
-                }}
-              >
-                Зареєструватись
-              </Button>
-              : <Button
-              startIcon={<BiUser/>}
-              variant="contained"
-              size="medium"
-              href="/user"
-              sx={{
-                minWidth: "17vw",
-                py: 3,
-                "&:hover": {
-                  color: "white",
-                },
-              }}
-            >
-              Кабінет
-            </Button>
-              }
+              {customer === null ? (
+                <Button
+                  startIcon={<BiLogIn />}
+                  variant="contained"
+                  size="medium"
+                  href="/signin"
+                  sx={{
+                    minWidth: "17vw",
+                    py: 3,
+                    "&:hover": {
+                      color: "white",
+                    },
+                  }}
+                >
+                  Зареєструватись
+                </Button>
+              ) : (
+                <Button
+                  startIcon={<BiUser />}
+                  variant="contained"
+                  size="medium"
+                  href="/user"
+                  sx={{
+                    minWidth: "17vw",
+                    py: 3,
+                    "&:hover": {
+                      color: "white",
+                    },
+                  }}
+                >
+                  Кабінет
+                </Button>
+              )}
             </Grid>
             <Grid item>
               <Button

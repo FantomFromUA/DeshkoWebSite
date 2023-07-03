@@ -1,4 +1,3 @@
-import { error } from "console";
 import { EmailModel } from "../types/emailModel";
 
 export const sendContactEmail =async (email : EmailModel) => {

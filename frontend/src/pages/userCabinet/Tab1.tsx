@@ -1,7 +1,6 @@
 import { Box, Chip } from '@mui/material';
 import { DataGrid, GridCellParams, GridColDef, GridRowsProp, GridToolbar } from '@mui/x-data-grid';
 import * as React from 'react';
-import ErrorPage from '../error/ErrorPage';
 
 const Tab1 : React.FC<{rows : GridRowsProp}> = ({rows}) => {
 
