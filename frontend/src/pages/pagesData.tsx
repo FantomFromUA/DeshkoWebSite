@@ -1,4 +1,3 @@
-import { Navigate } from "react-router-dom";
 import { routerType } from "../types/router.types";
 import AboutPage from "./about/AboutPage";
 import ErrorPage from "./error/ErrorPage";

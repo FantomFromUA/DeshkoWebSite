@@ -12,7 +12,7 @@ import {
 import * as React from "react";
 import { getParcelById } from "../../http/parcelHttp";
 import { ParcelModel } from "../../types/parcelModel";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const TrackingPage: React.FC = () => {
 

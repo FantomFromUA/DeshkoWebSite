@@ -45,6 +45,7 @@
 .text {
   font-family: "Helvetica Neue";
   color: white;
+  text-align: center;
 }
 
 .ctaButton:hover {

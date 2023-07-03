@@ -1,11 +1,7 @@
-import React, { SyntheticEvent, useEffect } from "react";
-import { Typography, Container, Box, Chip, Divider, Tabs, Tab } from "@mui/material";
+import React, { SyntheticEvent } from "react";
+import { Typography, Container, Box, Tabs, Tab } from "@mui/material";
 import {
-  DataGrid,
-  GridCellParams,
-  GridColDef,
   GridRowsProp,
-  GridToolbar,
 } from "@mui/x-data-grid";
 import { Button } from "react-bootstrap";
 import { ParcelModel } from "../../types/parcelModel";

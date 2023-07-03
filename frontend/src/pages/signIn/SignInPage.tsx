@@ -5,21 +5,16 @@ import {
   Grid,
   Container,
   Button,
-  FormControlLabel,
-  Checkbox,
   InputAdornment,
   IconButton,
 } from "@mui/material";
 import { useState } from "react";
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { signin } from "../../http/userHttp";
 import { CustomerModel } from "../../types/customerModel";
-import { error } from "console";
 
 const SignInPage = () => {
-
-  const navigate = useNavigate();
 
   const [loginError, setLoginError] = useState("");
   const [passwordError, setPasswordError] = useState("");

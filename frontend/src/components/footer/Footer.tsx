@@ -24,7 +24,6 @@ const Footer = () => {
               <Typography
                 sx={{
                   fontSize: { xs: "h6.fontSize", sm: "h5.fontSize" },
-                   
                   fontWeight: "bold",
                 }}
               >
