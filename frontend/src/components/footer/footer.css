@@ -1,0 +1,25 @@
+.footer {
+    padding: 100px;
+    background-image: url("../../images/footer.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+}
+.link {
+  color: white;
+}
+.link:hover {
+  color: red;
+  opacity: 0.6;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button:hover {
+  color: white;
+  background-color: black;
+}

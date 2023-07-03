@@ -1,0 +1,42 @@
+.about-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.about-image-block{
+    width: 50%;
+    height: 50vh;
+}
+
+.about-info-hero{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.about-text{
+    font-size: large;
+    width: 50%;
+    padding: 30px;
+}
+
+.about-image-container {
+    height: 50vh;
+    width: 100%;
+}
+
+.about-image {
+    height: 100%;
+    background: no-repeat center center;
+    background-image: url("../../images/about.jpeg");
+    background-size: cover;
+    position: relative;
+}
+
+.about-text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
